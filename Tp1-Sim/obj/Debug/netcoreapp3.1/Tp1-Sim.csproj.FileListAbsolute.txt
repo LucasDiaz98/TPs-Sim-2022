@@ -1,0 +1,15 @@
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\bin\Debug\netcoreapp3.1\Tp1-Sim.exe
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\bin\Debug\netcoreapp3.1\Tp1-Sim.deps.json
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\bin\Debug\netcoreapp3.1\Tp1-Sim.runtimeconfig.json
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\bin\Debug\netcoreapp3.1\Tp1-Sim.runtimeconfig.dev.json
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\bin\Debug\netcoreapp3.1\Tp1-Sim.dll
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\bin\Debug\netcoreapp3.1\Tp1-Sim.pdb
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.csproj.AssemblyReference.cache
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1_Sim.Form1.resources
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.csproj.GenerateResource.cache
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.AssemblyInfoInputs.cache
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.AssemblyInfo.cs
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.csproj.CoreCompileInputs.cache
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.dll
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.pdb
+C:\TP1 SIM\TPs-Sim-2022\Tp1-Sim\obj\Debug\netcoreapp3.1\Tp1-Sim.genruntimeconfig.cache
