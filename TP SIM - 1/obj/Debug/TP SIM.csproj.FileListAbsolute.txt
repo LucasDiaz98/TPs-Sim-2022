@@ -18,3 +18,13 @@ D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM\obj\D
 D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM\obj\Debug\TP SIM.exe
 D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM\obj\Debug\TP SIM.pdb
 D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM\obj\Debug\TP_SIM.TP1.resources
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\bin\Debug\TP SIM.exe.config
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\bin\Debug\TP SIM.exe
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\bin\Debug\TP SIM.pdb
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP SIM.csproj.AssemblyReference.cache
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP_SIM.TP1.resources
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP_SIM.Properties.Resources.resources
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP SIM.csproj.GenerateResource.cache
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP SIM.csproj.CoreCompileInputs.cache
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP SIM.exe
+D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP SIM - 1\obj\Debug\TP SIM.pdb

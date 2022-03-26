@@ -56,6 +56,8 @@ namespace TP_SIM
             this.listaNumeros = new System.Windows.Forms.ListBox();
             this.btnHistograma = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtMaxPeriodo = new System.Windows.Forms.TextBox();
             this.Metodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -63,6 +65,8 @@ namespace TP_SIM
             // 
             // Metodo
             // 
+            this.Metodo.Controls.Add(this.txtMaxPeriodo);
+            this.Metodo.Controls.Add(this.label8);
             this.Metodo.Controls.Add(this.cmbIntervalos);
             this.Metodo.Controls.Add(this.btnLimpiar);
             this.Metodo.Controls.Add(this.txtM);
@@ -83,7 +87,7 @@ namespace TP_SIM
             this.Metodo.Controls.Add(this.cmb_Metodo);
             this.Metodo.Location = new System.Drawing.Point(10, 10);
             this.Metodo.Name = "Metodo";
-            this.Metodo.Size = new System.Drawing.Size(366, 233);
+            this.Metodo.Size = new System.Drawing.Size(391, 248);
             this.Metodo.TabIndex = 0;
             this.Metodo.TabStop = false;
             this.Metodo.Text = "Metodo";
@@ -92,14 +96,14 @@ namespace TP_SIM
             // 
             this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIntervalos.FormattingEnabled = true;
-            this.cmbIntervalos.Location = new System.Drawing.Point(8, 166);
+            this.cmbIntervalos.Location = new System.Drawing.Point(45, 213);
             this.cmbIntervalos.Name = "cmbIntervalos";
             this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
             this.cmbIntervalos.TabIndex = 16;
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(286, 180);
+            this.btnLimpiar.Location = new System.Drawing.Point(198, 161);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(64, 20);
             this.btnLimpiar.TabIndex = 15;
@@ -126,7 +130,7 @@ namespace TP_SIM
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(286, 143);
+            this.btnGenerar.Location = new System.Drawing.Point(286, 161);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(64, 20);
             this.btnGenerar.TabIndex = 12;
@@ -161,7 +165,7 @@ namespace TP_SIM
             // 
             // btnIntervalos
             // 
-            this.btnIntervalos.Location = new System.Drawing.Point(143, 167);
+            this.btnIntervalos.Location = new System.Drawing.Point(180, 214);
             this.btnIntervalos.Name = "btnIntervalos";
             this.btnIntervalos.Size = new System.Drawing.Size(110, 20);
             this.btnIntervalos.TabIndex = 1;
@@ -294,6 +298,23 @@ namespace TP_SIM
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 127);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Periodo máximo";
+            // 
+            // txtMaxPeriodo
+            // 
+            this.txtMaxPeriodo.Enabled = false;
+            this.txtMaxPeriodo.Location = new System.Drawing.Point(104, 124);
+            this.txtMaxPeriodo.Name = "txtMaxPeriodo";
+            this.txtMaxPeriodo.Size = new System.Drawing.Size(62, 20);
+            this.txtMaxPeriodo.TabIndex = 18;
+            // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +363,8 @@ namespace TP_SIM
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.ComboBox cmbIntervalos;
+        private System.Windows.Forms.TextBox txtMaxPeriodo;
+        private System.Windows.Forms.Label label8;
     }
 }
 
