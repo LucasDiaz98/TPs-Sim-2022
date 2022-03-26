@@ -215,6 +215,8 @@ namespace TP_SIM
             btnLimpiar.Enabled = false;
             dgIntervalos.DataSource = null;
             listaNumeros.Items.Clear();
+            //Funcion para limpiar los cambios
+
         }
     }
 }
