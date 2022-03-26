@@ -125,13 +125,22 @@ namespace TP_SIM
             numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
             listaNumeros.DataSource = numerosRND;
             txtM.Text = Math.Pow(2, g).ToString();
+
+            if (cmbIntervalos.SelectedIndex == 0)
+            {
+                txtMaxPeriodo.Text = txtM.Text;
+            }
+            else 
+            {
+                var calculo = int.Parse(txtM.Text) / 4;
+                txtMaxPeriodo.Text = calculo.ToString();
+            }
         }
 
         private void btnIntervalos_Click(object sender, EventArgs e)
         {
             //List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
             //List<Intervalo> intervalos = Convert.ToDouble(cmbIntervalos.SelectedItem.ToString());
-            //hola esto es un cometario de prueba y a luquitas no le anda
             int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
             List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
@@ -185,6 +194,7 @@ namespace TP_SIM
         {
             if (cmb_Metodo.SelectedIndex == 1)
             {
+                txtC.Enabled = false;
                 txtC.Text = 0.ToString();
             }
             else 
@@ -204,7 +214,9 @@ namespace TP_SIM
             cmb_Metodo.SelectedIndex = -1;
             btnLimpiar.Enabled = false;
             dgIntervalos.DataSource = null;
-            listaNumeros.Enabled = false;
+            listaNumeros.Items.Clear();
+            //Funcion para limpiar los cambios
+
         }
     }
 }
