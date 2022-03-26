@@ -1,7 +1,7 @@
 ﻿
 namespace TP_SIM
 {
-    partial class Form1
+    partial class TP1
     {
         /// <summary>
         ///  Required designer variable.
@@ -34,10 +34,15 @@ namespace TP_SIM
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Metodo = new System.Windows.Forms.GroupBox();
+            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.txtM = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.txt_numSimulaciones = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnIntervalos = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,8 +52,6 @@ namespace TP_SIM
             this.txtSemilla = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmb_Metodo = new System.Windows.Forms.ComboBox();
-            this.btnIntervalos = new System.Windows.Forms.Button();
-            this.txtIntervalos = new System.Windows.Forms.TextBox();
             this.dgIntervalos = new System.Windows.Forms.DataGridView();
             this.listaNumeros = new System.Windows.Forms.ListBox();
             this.btnHistograma = new System.Windows.Forms.Button();
@@ -60,12 +63,15 @@ namespace TP_SIM
             // 
             // Metodo
             // 
+            this.Metodo.Controls.Add(this.cmbIntervalos);
+            this.Metodo.Controls.Add(this.btnLimpiar);
+            this.Metodo.Controls.Add(this.txtM);
+            this.Metodo.Controls.Add(this.label7);
             this.Metodo.Controls.Add(this.btnGenerar);
             this.Metodo.Controls.Add(this.txt_numSimulaciones);
             this.Metodo.Controls.Add(this.label6);
             this.Metodo.Controls.Add(this.label5);
             this.Metodo.Controls.Add(this.btnIntervalos);
-            this.Metodo.Controls.Add(this.txtIntervalos);
             this.Metodo.Controls.Add(this.label4);
             this.Metodo.Controls.Add(this.label3);
             this.Metodo.Controls.Add(this.label2);
@@ -82,9 +88,45 @@ namespace TP_SIM
             this.Metodo.TabStop = false;
             this.Metodo.Text = "Metodo";
             // 
+            // cmbIntervalos
+            // 
+            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIntervalos.FormattingEnabled = true;
+            this.cmbIntervalos.Location = new System.Drawing.Point(8, 166);
+            this.cmbIntervalos.Name = "cmbIntervalos";
+            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
+            this.cmbIntervalos.TabIndex = 16;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(286, 180);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(64, 20);
+            this.btnLimpiar.TabIndex = 15;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // txtM
+            // 
+            this.txtM.Enabled = false;
+            this.txtM.Location = new System.Drawing.Point(264, 120);
+            this.txtM.Name = "txtM";
+            this.txtM.Size = new System.Drawing.Size(86, 20);
+            this.txtM.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(229, 123);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "m";
+            // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(276, 121);
+            this.btnGenerar.Location = new System.Drawing.Point(286, 143);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(64, 20);
             this.btnGenerar.TabIndex = 12;
@@ -116,6 +158,16 @@ namespace TP_SIM
             this.label5.Size = new System.Drawing.Size(13, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "c";
+            // 
+            // btnIntervalos
+            // 
+            this.btnIntervalos.Location = new System.Drawing.Point(143, 167);
+            this.btnIntervalos.Name = "btnIntervalos";
+            this.btnIntervalos.Size = new System.Drawing.Size(110, 20);
+            this.btnIntervalos.TabIndex = 1;
+            this.btnIntervalos.Text = "Calcular intervalos";
+            this.btnIntervalos.UseVisualStyleBackColor = true;
+            this.btnIntervalos.Click += new System.EventHandler(this.btnIntervalos_Click);
             // 
             // label4
             // 
@@ -183,28 +235,13 @@ namespace TP_SIM
             // 
             // cmb_Metodo
             // 
+            this.cmb_Metodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Metodo.FormattingEnabled = true;
             this.cmb_Metodo.Location = new System.Drawing.Point(62, 23);
             this.cmb_Metodo.Name = "cmb_Metodo";
-            this.cmb_Metodo.Size = new System.Drawing.Size(104, 21);
+            this.cmb_Metodo.Size = new System.Drawing.Size(145, 21);
             this.cmb_Metodo.TabIndex = 0;
-            // 
-            // btnIntervalos
-            // 
-            this.btnIntervalos.Location = new System.Drawing.Point(143, 161);
-            this.btnIntervalos.Name = "btnIntervalos";
-            this.btnIntervalos.Size = new System.Drawing.Size(64, 20);
-            this.btnIntervalos.TabIndex = 1;
-            this.btnIntervalos.Text = "intervalos";
-            this.btnIntervalos.UseVisualStyleBackColor = true;
-            this.btnIntervalos.Click += new System.EventHandler(this.btnIntervalos_Click);
-            // 
-            // txtIntervalos
-            // 
-            this.txtIntervalos.Location = new System.Drawing.Point(28, 161);
-            this.txtIntervalos.Name = "txtIntervalos";
-            this.txtIntervalos.Size = new System.Drawing.Size(86, 20);
-            this.txtIntervalos.TabIndex = 3;
+            this.cmb_Metodo.SelectedIndexChanged += new System.EventHandler(this.cmb_Metodo_SelectedIndexChanged);
             // 
             // dgIntervalos
             // 
@@ -212,7 +249,7 @@ namespace TP_SIM
             this.dgIntervalos.Location = new System.Drawing.Point(641, 10);
             this.dgIntervalos.Name = "dgIntervalos";
             this.dgIntervalos.RowTemplate.Height = 25;
-            this.dgIntervalos.Size = new System.Drawing.Size(419, 200);
+            this.dgIntervalos.Size = new System.Drawing.Size(556, 200);
             this.dgIntervalos.TabIndex = 4;
             // 
             // listaNumeros
@@ -227,7 +264,7 @@ namespace TP_SIM
             // 
             this.btnHistograma.Location = new System.Drawing.Point(469, 223);
             this.btnHistograma.Name = "btnHistograma";
-            this.btnHistograma.Size = new System.Drawing.Size(64, 20);
+            this.btnHistograma.Size = new System.Drawing.Size(75, 20);
             this.btnHistograma.TabIndex = 6;
             this.btnHistograma.Text = "histograma";
             this.btnHistograma.UseVisualStyleBackColor = true;
@@ -252,23 +289,25 @@ namespace TP_SIM
             series2.Name = "Frecuencia esperada";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(772, 255);
+            this.chart1.Size = new System.Drawing.Size(1084, 255);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
-            // Form1
+            // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 609);
+            this.ClientSize = new System.Drawing.Size(1209, 609);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnHistograma);
             this.Controls.Add(this.listaNumeros);
             this.Controls.Add(this.dgIntervalos);
             this.Controls.Add(this.Metodo);
-            this.Name = "Form1";
+            this.Name = "TP1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP 1 - Grupo 1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Metodo.ResumeLayout(false);
             this.Metodo.PerformLayout();
@@ -295,11 +334,14 @@ namespace TP_SIM
         private System.Windows.Forms.TextBox txtSemilla;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnIntervalos;
-        private System.Windows.Forms.TextBox txtIntervalos;
         private System.Windows.Forms.DataGridView dgIntervalos;
         private System.Windows.Forms.ListBox listaNumeros;
         private System.Windows.Forms.Button btnHistograma;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TextBox txtM;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.ComboBox cmbIntervalos;
     }
 }
 
