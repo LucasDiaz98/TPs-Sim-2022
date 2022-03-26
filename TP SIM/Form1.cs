@@ -141,7 +141,6 @@ namespace TP_SIM
         {
             //List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
             //List<Intervalo> intervalos = Convert.ToDouble(cmbIntervalos.SelectedItem.ToString());
-            //hola esto es un cometario de prueba
             int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
             List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
