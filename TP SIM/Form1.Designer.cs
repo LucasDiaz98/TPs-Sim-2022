@@ -282,11 +282,10 @@ namespace TP_SIM
             this.chart1.Size = new System.Drawing.Size(1223, 323);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // btnIntervalos
             // 
-            this.btnIntervalos.Location = new System.Drawing.Point(1071, 42);
+            this.btnIntervalos.Location = new System.Drawing.Point(1067, 40);
             this.btnIntervalos.Name = "btnIntervalos";
             this.btnIntervalos.Size = new System.Drawing.Size(110, 20);
             this.btnIntervalos.TabIndex = 12;
