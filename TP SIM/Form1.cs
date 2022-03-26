@@ -35,7 +35,6 @@ namespace TP_SIM
             cmbIntervalos.Items.Add("8");
             cmbIntervalos.Items.Add("10");
             cmbIntervalos.Items.Add("12");
-
         }
 
         
@@ -194,11 +193,12 @@ namespace TP_SIM
         {
             if (cmb_Metodo.SelectedIndex == 1)
             {
-                txtC.Enabled = false;
                 txtC.Text = 0.ToString();
+                txtC.Enabled = false;
             }
             else 
             {
+                txtC.Enabled = true;
                 txtC.Text = "";
             }
         }
@@ -211,12 +211,10 @@ namespace TP_SIM
             txtK.Text = "";
             txtM.Text = "";
             txtC.Text = "";
+            txtMaxPeriodo.Text = "";
             cmb_Metodo.SelectedIndex = -1;
-            btnLimpiar.Enabled = false;
-            dgIntervalos.DataSource = null;
+            listaNumeros.DataSource = null;
             listaNumeros.Items.Clear();
-            //Funcion para limpiar los cambios
-
         }
     }
 }
