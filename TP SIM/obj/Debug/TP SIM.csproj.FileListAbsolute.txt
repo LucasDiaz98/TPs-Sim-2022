@@ -1,0 +1,10 @@
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP SIM.csproj.AssemblyReference.cache
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP_SIM.Properties.Resources.resources
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP SIM.csproj.GenerateResource.cache
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP SIM.csproj.CoreCompileInputs.cache
+C:\Users\MATIAS\source\repos\TP SIM\bin\Debug\TP SIM.exe.config
+C:\Users\MATIAS\source\repos\TP SIM\bin\Debug\TP SIM.exe
+C:\Users\MATIAS\source\repos\TP SIM\bin\Debug\TP SIM.pdb
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP_SIM.Form1.resources
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP SIM.exe
+C:\Users\MATIAS\source\repos\TP SIM\obj\Debug\TP SIM.pdb
