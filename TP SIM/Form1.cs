@@ -11,7 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TP_SIM
 {
-    public partial class Form1 : Form
+    public partial class TP1 : Form
     {
         double k = 0;
         double c = 0;
@@ -22,16 +22,21 @@ namespace TP_SIM
         List<double> numerosRND;
         List<Intervalo> intervalos;
 
-        public Form1()
+        public TP1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-        }
+            cmb_Metodo.Items.Add("Metodo lineal congruente mixto");
+            cmb_Metodo.Items.Add("Metodo lineal congruente multiplicativo");
+            cmbIntervalos.Items.Add("5");
+            cmbIntervalos.Items.Add("8");
+            cmbIntervalos.Items.Add("10");
+            cmbIntervalos.Items.Add("12");
 
+        }
 
         
         private List<Intervalo> generarIntervalos(double n)
@@ -39,22 +44,26 @@ namespace TP_SIM
             List<Intervalo> intervalos = new List<Intervalo>();
             double valor = Math.Round(1 / n, 4);
             double valor_ant = 0;
+            int iteracion = 0;
             for (int i = 0; i < n; i++)
             {
                 double valor_act = Math.Round(valor * (i + 1), 4);
-                intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act));
+                intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act,iteracion));
                 valor_ant = valor_act;
+                iteracion += 1; 
+                
             }
             return intervalos;
         }
 
-        private Intervalo generarObjetoIntervalo(double inf, double sup)
+        private Intervalo generarObjetoIntervalo(double inf, double sup,int iteracion)
         {
             Intervalo intervalo = new Intervalo()
             {
                 Valor_inf = inf,
                 Valor_sup = sup,
-                Frecuencia_observada = 0
+                Frecuencia_observada = 0,
+                Num_iteracion = iteracion
             };
         return intervalo;
 
@@ -115,27 +124,30 @@ namespace TP_SIM
             numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
             numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
             listaNumeros.DataSource = numerosRND;
-
+            txtM.Text = Math.Pow(2, g).ToString();
         }
 
         private void btnIntervalos_Click(object sender, EventArgs e)
         {
-            List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
+            //List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
+            //List<Intervalo> intervalos = Convert.ToDouble(cmbIntervalos.SelectedItem.ToString());
+            int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
+            List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
             dgIntervalos.DataSource = intervalos;
             this.intervalos = intervalos;
-            
-        
+            intervalos = new List<Intervalo>();
         }
 
         public class Intervalo
         {
+            private int numIteracion;
             private double valor_inf;
             private double valor_sup;
             private int frecuencia_observada;
             private int frecuencia_esperada;
 
-            
+            public int Num_iteracion { get => numIteracion; set => numIteracion = value; }
             public double Valor_sup { get => valor_sup; set => valor_sup = value; }
             public double Valor_inf { get => valor_inf; set => valor_inf = value; }
             public int Frecuencia_observada { get => frecuencia_observada; set => frecuencia_observada = value; }
@@ -166,6 +178,32 @@ namespace TP_SIM
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmb_Metodo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmb_Metodo.SelectedIndex == 1)
+            {
+                txtC.Text = 0.ToString();
+            }
+            else 
+            {
+                txtC.Text = "";
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txt_numSimulaciones.Text = "";
+            txtSemilla.Text = "";
+            txtG.Text = "";
+            txtK.Text = "";
+            txtM.Text = "";
+            txtC.Text = "";
+            cmb_Metodo.SelectedIndex = -1;
+            btnLimpiar.Enabled = false;
+            dgIntervalos.DataSource = null;
+            listaNumeros.Enabled = false;
         }
     }
 }
