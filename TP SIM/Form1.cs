@@ -13,6 +13,7 @@ namespace TP_SIM
 {
     public partial class TP1 : Form
     {
+        //Variables.
         double k = 0;
         double c = 0;
         double g = 0;
@@ -27,6 +28,8 @@ namespace TP_SIM
             InitializeComponent();
         }
 
+
+        //Aca se hace la carga de datos del formulario.
         private void Form1_Load(object sender, EventArgs e)
         {
             btnIntervalos.Enabled = false;
@@ -40,7 +43,8 @@ namespace TP_SIM
             cmbIntervalos.Items.Add("12");
         }
 
-        
+
+        //Esta funcion es la que se encarga de ...
         private List<Intervalo> generarIntervalos(double n)
         {
             List<Intervalo> intervalos = new List<Intervalo>();
@@ -58,6 +62,8 @@ namespace TP_SIM
             return intervalos;
         }
 
+
+        //Esta funcion se encarga de ...
         private Intervalo generarObjetoIntervalo(double inf, double sup,int iteracion)
         {
             Intervalo intervalo = new Intervalo()
@@ -72,13 +78,13 @@ namespace TP_SIM
 
         }
 
+
+        //Esta funcion calcula las frecuencias que posteriormente van a ser usadas en el evento que genera el boton "Calcular intervalos".
         private void calcularFrecuencias(List<double> listrnd, List<Intervalo> intervalos)
         {
             foreach (Intervalo intervalo in intervalos)
             {
                 intervalo.Frecuencia_esperada = listrnd.Count / intervalos.Count;
-
-                intervalo.Frecuencia_relativa = intervalo.Frecuencia_observada / listrnd.Count;
             }
 
             foreach (double rnd in listrnd)
@@ -96,6 +102,9 @@ namespace TP_SIM
         }
 
 
+        //Esta funcion es la que se encarga de generar los numeros aleatorios, recibe como parametros la semilla,
+        //una constante g, una constante k, el incremento c y el numero de simulaciones. Todos estos numeros
+        //aleatorios generados son guardados dentro de una lista.
         private List<double> generadorNumerosAleatorios(double semilla, double g, double k, double c, double n)
         {
             double multiplicador = 1 + 4 * k;
@@ -106,6 +115,7 @@ namespace TP_SIM
 
             for (int i = 0; i < n; i++)
             {
+                //Esta ecuacion recursiva es la que se encarga de ir generando los numeros aleatorios.
                 x = (multiplicador * semilla + c) % modulo;
                 rnd = Math.Round((x) / (modulo), 4);
                 numerosRandom.Add(rnd);
@@ -114,6 +124,8 @@ namespace TP_SIM
             return numerosRandom;
         }
 
+
+        //Esta funcion se encarga de tomar todos los datos ingresados por el usuario y muestra la lista generada de numeros aleatorios.
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             //if (Double.TryParse(txtK.Text, out k)) ;
@@ -141,6 +153,9 @@ namespace TP_SIM
             }
         }
 
+
+        //Esta funcion toma la seleccion que se hace del numero de intervalos que se quiere y genera la grilla
+        //con los datos correspondientes.
         private void btnIntervalos_Click(object sender, EventArgs e)
         {
             //List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
@@ -154,6 +169,8 @@ namespace TP_SIM
             intervalos = new List<Intervalo>();
         }
 
+
+        //En esta funcion creamos la clase Intervalo e inicializamos sus valores.
         public class Intervalo
         {
             private int numIteracion;
@@ -188,22 +205,19 @@ namespace TP_SIM
 
         }
 
+
+        //Esta funcion es la que se encarga de generar el histograma.
         private void btnHistograma_Click(object sender, EventArgs e)
         {
-         
             for (int i = 0; i < intervalos.Count; i++)
             {
                 chart1.Series["Frecuencia observada"].Points.AddXY(intervalos[i].intervaloString(), intervalos[i].Frecuencia_observada);
                 chart1.Series["Frecuencia esperada"].Points.AddY(intervalos[i].Frecuencia_esperada);
-
             }
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
 
-        }
-
+        //Esta funcion nos permite validar que segun el metodo que se elija, estara habilitada o no la opcion de agregar un valor a "c".
         private void cmb_Metodo_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnGenerar.Enabled = true;
@@ -219,6 +233,8 @@ namespace TP_SIM
             }
         }
 
+
+        //Esta funcion se encarga de limpiar los campos.
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txt_numSimulaciones.Text = "";
@@ -233,6 +249,8 @@ namespace TP_SIM
             listaNumeros.Items.Clear();
         }
 
+
+        //Esta funcion cambia el estado del boton "Calcular intervalos" al elegir una cantidad de intervalos.
         private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnIntervalos.Enabled = true;
