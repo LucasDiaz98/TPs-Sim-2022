@@ -36,7 +36,6 @@ namespace TP_SIM
             this.Metodo = new System.Windows.Forms.GroupBox();
             this.txtMaxPeriodo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.txtM = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@ namespace TP_SIM
             this.txt_numSimulaciones = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnIntervalos = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,13 +52,15 @@ namespace TP_SIM
             this.txtSemilla = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmb_Metodo = new System.Windows.Forms.ComboBox();
-            this.dgIntervalos = new System.Windows.Forms.DataGridView();
             this.listaNumeros = new System.Windows.Forms.ListBox();
             this.btnHistograma = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnIntervalos = new System.Windows.Forms.Button();
+            this.dgIntervalos = new System.Windows.Forms.DataGridView();
+            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
             this.Metodo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
             this.SuspendLayout();
             // 
             // Metodo
@@ -83,7 +83,7 @@ namespace TP_SIM
             this.Metodo.Controls.Add(this.txtSemilla);
             this.Metodo.Controls.Add(this.label1);
             this.Metodo.Controls.Add(this.cmb_Metodo);
-            this.Metodo.Location = new System.Drawing.Point(12, 33);
+            this.Metodo.Location = new System.Drawing.Point(12, 74);
             this.Metodo.Name = "Metodo";
             this.Metodo.Size = new System.Drawing.Size(429, 248);
             this.Metodo.TabIndex = 0;
@@ -105,15 +105,6 @@ namespace TP_SIM
             this.label8.Size = new System.Drawing.Size(81, 13);
             this.label8.TabIndex = 17;
             this.label8.Text = "Periodo máximo";
-            // 
-            // cmbIntervalos
-            // 
-            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIntervalos.FormattingEnabled = true;
-            this.cmbIntervalos.Location = new System.Drawing.Point(857, 9);
-            this.cmbIntervalos.Name = "cmbIntervalos";
-            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
-            this.cmbIntervalos.TabIndex = 11;
             // 
             // btnLimpiar
             // 
@@ -176,16 +167,6 @@ namespace TP_SIM
             this.label5.Size = new System.Drawing.Size(13, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "c";
-            // 
-            // btnIntervalos
-            // 
-            this.btnIntervalos.Location = new System.Drawing.Point(992, 10);
-            this.btnIntervalos.Name = "btnIntervalos";
-            this.btnIntervalos.Size = new System.Drawing.Size(110, 20);
-            this.btnIntervalos.TabIndex = 12;
-            this.btnIntervalos.Text = "Calcular intervalos";
-            this.btnIntervalos.UseVisualStyleBackColor = true;
-            this.btnIntervalos.Click += new System.EventHandler(this.btnIntervalos_Click);
             // 
             // label4
             // 
@@ -261,26 +242,17 @@ namespace TP_SIM
             this.cmb_Metodo.TabIndex = 1;
             this.cmb_Metodo.SelectedIndexChanged += new System.EventHandler(this.cmb_Metodo_SelectedIndexChanged);
             // 
-            // dgIntervalos
-            // 
-            this.dgIntervalos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgIntervalos.Location = new System.Drawing.Point(700, 33);
-            this.dgIntervalos.Name = "dgIntervalos";
-            this.dgIntervalos.RowTemplate.Height = 25;
-            this.dgIntervalos.Size = new System.Drawing.Size(650, 200);
-            this.dgIntervalos.TabIndex = 4;
-            // 
             // listaNumeros
             // 
             this.listaNumeros.FormattingEnabled = true;
-            this.listaNumeros.Location = new System.Drawing.Point(469, 33);
+            this.listaNumeros.Location = new System.Drawing.Point(475, 83);
             this.listaNumeros.Name = "listaNumeros";
             this.listaNumeros.Size = new System.Drawing.Size(215, 199);
             this.listaNumeros.TabIndex = 5;
             // 
             // btnHistograma
             // 
-            this.btnHistograma.Location = new System.Drawing.Point(532, 245);
+            this.btnHistograma.Location = new System.Drawing.Point(508, 295);
             this.btnHistograma.Name = "btnHistograma";
             this.btnHistograma.Size = new System.Drawing.Size(133, 36);
             this.btnHistograma.TabIndex = 13;
@@ -294,7 +266,7 @@ namespace TP_SIM
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(1, 302);
+            this.chart1.Location = new System.Drawing.Point(133, 383);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -307,16 +279,45 @@ namespace TP_SIM
             series2.Name = "Frecuencia esperada";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1146, 255);
+            this.chart1.Size = new System.Drawing.Size(1223, 323);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            // 
+            // btnIntervalos
+            // 
+            this.btnIntervalos.Location = new System.Drawing.Point(1071, 42);
+            this.btnIntervalos.Name = "btnIntervalos";
+            this.btnIntervalos.Size = new System.Drawing.Size(110, 20);
+            this.btnIntervalos.TabIndex = 12;
+            this.btnIntervalos.Text = "Calcular intervalos";
+            this.btnIntervalos.UseVisualStyleBackColor = true;
+            this.btnIntervalos.Click += new System.EventHandler(this.btnIntervalos_Click);
+            // 
+            // dgIntervalos
+            // 
+            this.dgIntervalos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgIntervalos.Location = new System.Drawing.Point(717, 83);
+            this.dgIntervalos.Name = "dgIntervalos";
+            this.dgIntervalos.RowTemplate.Height = 25;
+            this.dgIntervalos.Size = new System.Drawing.Size(1036, 200);
+            this.dgIntervalos.TabIndex = 4;
+            // 
+            // cmbIntervalos
+            // 
+            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIntervalos.FormattingEnabled = true;
+            this.cmbIntervalos.Location = new System.Drawing.Point(922, 41);
+            this.cmbIntervalos.Name = "cmbIntervalos";
+            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
+            this.cmbIntervalos.TabIndex = 11;
+            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
             // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 609);
+            this.ClientSize = new System.Drawing.Size(1594, 756);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnHistograma);
             this.Controls.Add(this.cmbIntervalos);
@@ -331,8 +332,8 @@ namespace TP_SIM
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Metodo.ResumeLayout(false);
             this.Metodo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,17 +354,17 @@ namespace TP_SIM
         private System.Windows.Forms.TextBox txtK;
         private System.Windows.Forms.TextBox txtSemilla;
         private System.Windows.Forms.Button btnGenerar;
-        private System.Windows.Forms.Button btnIntervalos;
-        private System.Windows.Forms.DataGridView dgIntervalos;
         private System.Windows.Forms.ListBox listaNumeros;
         private System.Windows.Forms.Button btnHistograma;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TextBox txtM;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.ComboBox cmbIntervalos;
         private System.Windows.Forms.TextBox txtMaxPeriodo;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnIntervalos;
+        private System.Windows.Forms.DataGridView dgIntervalos;
+        private System.Windows.Forms.ComboBox cmbIntervalos;
     }
 }
 

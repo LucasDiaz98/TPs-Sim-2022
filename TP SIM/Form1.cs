@@ -29,6 +29,9 @@ namespace TP_SIM
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            btnIntervalos.Enabled = false;
+            btnHistograma.Enabled = false;
+            btnGenerar.Enabled = false;
             cmb_Metodo.Items.Add("Metodo lineal congruente mixto");
             cmb_Metodo.Items.Add("Metodo lineal congruente multiplicativo");
             cmbIntervalos.Items.Add("5");
@@ -61,6 +64,7 @@ namespace TP_SIM
             {
                 Valor_inf = inf,
                 Valor_sup = sup,
+                Marca_clase = Math.Round(((inf + sup) / 2),2),
                 Frecuencia_observada = 0,
                 Num_iteracion = iteracion
             };
@@ -73,6 +77,8 @@ namespace TP_SIM
             foreach (Intervalo intervalo in intervalos)
             {
                 intervalo.Frecuencia_esperada = listrnd.Count / intervalos.Count;
+
+                intervalo.Frecuencia_relativa = intervalo.Frecuencia_observada / listrnd.Count;
             }
 
             foreach (double rnd in listrnd)
@@ -88,7 +94,6 @@ namespace TP_SIM
                 }
             }
         }
-
 
 
         private List<double> generadorNumerosAleatorios(double semilla, double g, double k, double c, double n)
@@ -140,6 +145,7 @@ namespace TP_SIM
         {
             //List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
             //List<Intervalo> intervalos = Convert.ToDouble(cmbIntervalos.SelectedItem.ToString());
+            btnHistograma.Enabled = true;
             int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
             List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
@@ -153,14 +159,22 @@ namespace TP_SIM
             private int numIteracion;
             private double valor_inf;
             private double valor_sup;
+            private double marca_clase;
             private int frecuencia_observada;
             private int frecuencia_esperada;
+            private int frecuencia_relativa;
+            private int frecuencia_acumulada;
+            private int frecuencia_relativa_acumulada;
 
             public int Num_iteracion { get => numIteracion; set => numIteracion = value; }
-            public double Valor_sup { get => valor_sup; set => valor_sup = value; }
             public double Valor_inf { get => valor_inf; set => valor_inf = value; }
+            public double Valor_sup { get => valor_sup; set => valor_sup = value; }
+            public double Marca_clase { get => marca_clase; set => marca_clase = value; }
             public int Frecuencia_observada { get => frecuencia_observada; set => frecuencia_observada = value; }
             public int Frecuencia_esperada { get => frecuencia_esperada; set => frecuencia_esperada = value; }
+            public int Frecuencia_relativa { get => frecuencia_relativa; set => frecuencia_relativa = value; }
+            public int Frecuencia_acumulada { get => frecuencia_acumulada; set => frecuencia_acumulada = value; }
+            public int Frecuencia_relativa_acumulada { get => frecuencia_relativa_acumulada; set => frecuencia_relativa_acumulada = value; }
 
             public bool estaEnIntervalo(double rnd)
             {
@@ -176,6 +190,7 @@ namespace TP_SIM
 
         private void btnHistograma_Click(object sender, EventArgs e)
         {
+         
             for (int i = 0; i < intervalos.Count; i++)
             {
                 chart1.Series["Frecuencia observada"].Points.AddXY(intervalos[i].intervaloString(), intervalos[i].Frecuencia_observada);
@@ -191,6 +206,7 @@ namespace TP_SIM
 
         private void cmb_Metodo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnGenerar.Enabled = true;
             if (cmb_Metodo.SelectedIndex == 1)
             {
                 txtC.Text = 0.ToString();
@@ -215,6 +231,11 @@ namespace TP_SIM
             cmb_Metodo.SelectedIndex = -1;
             listaNumeros.DataSource = null;
             listaNumeros.Items.Clear();
+        }
+
+        private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnIntervalos.Enabled = true;
         }
     }
 }
