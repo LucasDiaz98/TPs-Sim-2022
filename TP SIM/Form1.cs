@@ -13,6 +13,7 @@ namespace TP_SIM
 {
     public partial class TP1 : Form
     {
+        
         //Variables.
         double k = 0;
         double c = 0;
@@ -239,11 +240,15 @@ namespace TP_SIM
         //Esta funcion es la que se encarga de generar el histograma.
         private void btnHistograma_Click(object sender, EventArgs e)
         {
+            chart1.AlignDataPointsByAxisLabel();
             for (int i = 0; i < intervalos.Count; i++)
             {
                 chart1.Series["Frecuencia observada"].Points.AddXY(intervalos[i].intervaloString(), intervalos[i].Frecuencia_observada);
                 chart1.Series["Frecuencia esperada"].Points.AddY(intervalos[i].Frecuencia_esperada);
             }
+            chart1.Titles.Add("Histograma de frecuencias");
+            chart1.Series[0]["PointWidth"] = "1";
+            btnHistograma.Enabled = false;
         }
 
 
@@ -277,6 +282,7 @@ namespace TP_SIM
             cmb_Metodo.SelectedIndex = -1;
             listaNumeros.DataSource = null;
             listaNumeros.Items.Clear();
+            btnHistograma.Enabled = true;
         }
 
 
@@ -311,7 +317,11 @@ namespace TP_SIM
 
         private void btnLimpiarHistograma_Click(object sender, EventArgs e)
         {
-            //chart1.Series.Clear();
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+            btnHistograma.Enabled = true;
         }
     }
 }
