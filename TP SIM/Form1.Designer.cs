@@ -58,6 +58,16 @@ namespace TP_SIM
             this.btnIntervalos = new System.Windows.Forms.Button();
             this.dgIntervalos = new System.Windows.Forms.DataGridView();
             this.cmbIntervalos = new System.Windows.Forms.ComboBox();
+            this.Nro_Iteraciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_inf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_sup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca_clase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frecuencia_observada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frecuencia_esperada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frecuencia_relativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frecuencia_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frecuencia_relativa_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLimpiarHistograma = new System.Windows.Forms.Button();
             this.Metodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
@@ -252,7 +262,7 @@ namespace TP_SIM
             // 
             // btnHistograma
             // 
-            this.btnHistograma.Location = new System.Drawing.Point(508, 295);
+            this.btnHistograma.Location = new System.Drawing.Point(447, 320);
             this.btnHistograma.Name = "btnHistograma";
             this.btnHistograma.Size = new System.Drawing.Size(133, 36);
             this.btnHistograma.TabIndex = 13;
@@ -266,7 +276,7 @@ namespace TP_SIM
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(133, 383);
+            this.chart1.Location = new System.Drawing.Point(143, 385);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -295,11 +305,24 @@ namespace TP_SIM
             // 
             // dgIntervalos
             // 
+            this.dgIntervalos.AllowUserToAddRows = false;
+            this.dgIntervalos.AllowUserToDeleteRows = false;
             this.dgIntervalos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgIntervalos.Location = new System.Drawing.Point(717, 83);
+            this.dgIntervalos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nro_Iteraciones,
+            this.Valor_inf,
+            this.Valor_sup,
+            this.Marca_clase,
+            this.Frecuencia_observada,
+            this.Frecuencia_esperada,
+            this.Frecuencia_relativa,
+            this.Frecuencia_acumulada,
+            this.Frecuencia_relativa_acumulada});
+            this.dgIntervalos.Location = new System.Drawing.Point(716, 82);
             this.dgIntervalos.Name = "dgIntervalos";
+            this.dgIntervalos.ReadOnly = true;
             this.dgIntervalos.RowTemplate.Height = 25;
-            this.dgIntervalos.Size = new System.Drawing.Size(1036, 200);
+            this.dgIntervalos.Size = new System.Drawing.Size(1018, 200);
             this.dgIntervalos.TabIndex = 4;
             // 
             // cmbIntervalos
@@ -312,11 +335,85 @@ namespace TP_SIM
             this.cmbIntervalos.TabIndex = 11;
             this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
             // 
+            // Nro_Iteraciones
+            // 
+            this.Nro_Iteraciones.FillWeight = 50F;
+            this.Nro_Iteraciones.HeaderText = "Nro_Iteraciones";
+            this.Nro_Iteraciones.Name = "Nro_Iteraciones";
+            this.Nro_Iteraciones.ReadOnly = true;
+            // 
+            // Valor_inf
+            // 
+            this.Valor_inf.HeaderText = "Valor_inf";
+            this.Valor_inf.Name = "Valor_inf";
+            this.Valor_inf.ReadOnly = true;
+            this.Valor_inf.Width = 70;
+            // 
+            // Valor_sup
+            // 
+            this.Valor_sup.HeaderText = "Valor_sup";
+            this.Valor_sup.Name = "Valor_sup";
+            this.Valor_sup.ReadOnly = true;
+            this.Valor_sup.Width = 70;
+            // 
+            // Marca_clase
+            // 
+            this.Marca_clase.HeaderText = "Marca_clase";
+            this.Marca_clase.Name = "Marca_clase";
+            this.Marca_clase.ReadOnly = true;
+            this.Marca_clase.Width = 80;
+            // 
+            // Frecuencia_observada
+            // 
+            this.Frecuencia_observada.HeaderText = "Frecuencia_observada";
+            this.Frecuencia_observada.Name = "Frecuencia_observada";
+            this.Frecuencia_observada.ReadOnly = true;
+            this.Frecuencia_observada.Width = 120;
+            // 
+            // Frecuencia_esperada
+            // 
+            this.Frecuencia_esperada.HeaderText = "Frecuencia_esperada";
+            this.Frecuencia_esperada.Name = "Frecuencia_esperada";
+            this.Frecuencia_esperada.ReadOnly = true;
+            this.Frecuencia_esperada.Width = 113;
+            // 
+            // Frecuencia_relativa
+            // 
+            this.Frecuencia_relativa.HeaderText = "Frecuencia_relativa";
+            this.Frecuencia_relativa.Name = "Frecuencia_relativa";
+            this.Frecuencia_relativa.ReadOnly = true;
+            this.Frecuencia_relativa.Width = 110;
+            // 
+            // Frecuencia_acumulada
+            // 
+            this.Frecuencia_acumulada.HeaderText = "Frecuencia_acumulada";
+            this.Frecuencia_acumulada.Name = "Frecuencia_acumulada";
+            this.Frecuencia_acumulada.ReadOnly = true;
+            this.Frecuencia_acumulada.Width = 122;
+            // 
+            // Frecuencia_relativa_acumulada
+            // 
+            this.Frecuencia_relativa_acumulada.HeaderText = "Frecuencia_relativa_acumulada";
+            this.Frecuencia_relativa_acumulada.Name = "Frecuencia_relativa_acumulada";
+            this.Frecuencia_relativa_acumulada.ReadOnly = true;
+            this.Frecuencia_relativa_acumulada.Width = 173;
+            // 
+            // btnLimpiarHistograma
+            // 
+            this.btnLimpiarHistograma.Location = new System.Drawing.Point(586, 320);
+            this.btnLimpiarHistograma.Name = "btnLimpiarHistograma";
+            this.btnLimpiarHistograma.Size = new System.Drawing.Size(133, 36);
+            this.btnLimpiarHistograma.TabIndex = 14;
+            this.btnLimpiarHistograma.Text = "Limpiar histograma";
+            this.btnLimpiarHistograma.UseVisualStyleBackColor = true;
+            this.btnLimpiarHistograma.Click += new System.EventHandler(this.btnLimpiarHistograma_Click);
+            // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1594, 756);
+            this.Controls.Add(this.btnLimpiarHistograma);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnHistograma);
             this.Controls.Add(this.cmbIntervalos);
@@ -364,6 +461,16 @@ namespace TP_SIM
         private System.Windows.Forms.Button btnIntervalos;
         private System.Windows.Forms.DataGridView dgIntervalos;
         private System.Windows.Forms.ComboBox cmbIntervalos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nro_Iteraciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_inf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_sup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca_clase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_observada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_esperada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_relativa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_acumulada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_relativa_acumulada;
+        private System.Windows.Forms.Button btnLimpiarHistograma;
     }
 }
 
