@@ -57,7 +57,6 @@ namespace TP_SIM
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnIntervalos = new System.Windows.Forms.Button();
             this.dgIntervalos = new System.Windows.Forms.DataGridView();
-            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
             this.Nro_Iteraciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor_inf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor_sup = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +66,7 @@ namespace TP_SIM
             this.Frecuencia_relativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_relativa_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
             this.btnLimpiarHistograma = new System.Windows.Forms.Button();
             this.Metodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -278,7 +278,9 @@ namespace TP_SIM
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(143, 385);
             this.chart1.Name = "chart1";
+            series1.BorderColor = System.Drawing.Color.Black;
             series1.ChartArea = "ChartArea1";
+            series1.IsValueShownAsLabel = true;
             series1.Legend = "Legend1";
             series1.Name = "Frecuencia observada";
             series2.BorderWidth = 4;
@@ -318,22 +320,12 @@ namespace TP_SIM
             this.Frecuencia_relativa,
             this.Frecuencia_acumulada,
             this.Frecuencia_relativa_acumulada});
-            this.dgIntervalos.Location = new System.Drawing.Point(716, 82);
+            this.dgIntervalos.Location = new System.Drawing.Point(709, 82);
             this.dgIntervalos.Name = "dgIntervalos";
             this.dgIntervalos.ReadOnly = true;
             this.dgIntervalos.RowTemplate.Height = 25;
-            this.dgIntervalos.Size = new System.Drawing.Size(1018, 200);
+            this.dgIntervalos.Size = new System.Drawing.Size(641, 200);
             this.dgIntervalos.TabIndex = 4;
-            // 
-            // cmbIntervalos
-            // 
-            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIntervalos.FormattingEnabled = true;
-            this.cmbIntervalos.Location = new System.Drawing.Point(922, 41);
-            this.cmbIntervalos.Name = "cmbIntervalos";
-            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
-            this.cmbIntervalos.TabIndex = 11;
-            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
             // 
             // Nro_Iteraciones
             // 
@@ -398,6 +390,16 @@ namespace TP_SIM
             this.Frecuencia_relativa_acumulada.ReadOnly = true;
             this.Frecuencia_relativa_acumulada.Width = 173;
             // 
+            // cmbIntervalos
+            // 
+            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIntervalos.FormattingEnabled = true;
+            this.cmbIntervalos.Location = new System.Drawing.Point(922, 41);
+            this.cmbIntervalos.Name = "cmbIntervalos";
+            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
+            this.cmbIntervalos.TabIndex = 11;
+            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
+            // 
             // btnLimpiarHistograma
             // 
             this.btnLimpiarHistograma.Location = new System.Drawing.Point(586, 320);
@@ -412,7 +414,7 @@ namespace TP_SIM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1594, 756);
+            this.ClientSize = new System.Drawing.Size(1362, 741);
             this.Controls.Add(this.btnLimpiarHistograma);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnHistograma);
@@ -424,7 +426,6 @@ namespace TP_SIM
             this.Name = "TP1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP 1 - Grupo 1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Metodo.ResumeLayout(false);
             this.Metodo.PerformLayout();
