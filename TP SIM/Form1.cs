@@ -22,6 +22,8 @@ namespace TP_SIM
         string mensajeError = "";
         List<double> numerosRND;
         List<Intervalo> intervalos;
+        double[] valores_chi = { 3.84, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7 };
+
 
         public TP1()
         {
@@ -50,53 +52,69 @@ namespace TP_SIM
             List<Intervalo> intervalos = new List<Intervalo>();
             double valor = Math.Round(1 / n, 4);
             double valor_ant = 0;
-            int iteracion = 0;
             for (int i = 0; i < n; i++)
             {
                 double valor_act = Math.Round(valor * (i + 1), 4);
-                intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act,iteracion));
+                intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act, i + 1));
                 valor_ant = valor_act;
-                iteracion += 1; 
-                
             }
             return intervalos;
         }
 
 
         //Esta funcion se encarga de ...
-        private Intervalo generarObjetoIntervalo(double inf, double sup,int iteracion)
+        private Intervalo generarObjetoIntervalo(double inf, double sup, int iteracion)
         {
             Intervalo intervalo = new Intervalo()
             {
                 Valor_inf = inf,
                 Valor_sup = sup,
-                Marca_clase = Math.Round(((inf + sup) / 2),2),
+                Marca_clase = Math.Round(((inf + sup) / 2), 4),
                 Frecuencia_observada = 0,
-                Num_iteracion = iteracion
+                Num_iteracion = iteracion,
+                //VER
+                Frecuencia_esperada = 0,
+                Frecuencia_relativa = 0,
+                Frecuencia_acumulada = 0,
+                Frecuencia_relativa_acumulada = 0
             };
-        return intervalo;
-
+            return intervalo;
         }
 
 
         //Esta funcion calcula las frecuencias que posteriormente van a ser usadas en el evento que genera el boton "Calcular intervalos".
         private void calcularFrecuencias(List<double> listrnd, List<Intervalo> intervalos)
         {
+            double acumulador = 0;
             foreach (Intervalo intervalo in intervalos)
             {
                 intervalo.Frecuencia_esperada = listrnd.Count / intervalos.Count;
             }
-
             foreach (double rnd in listrnd)
             {
                 foreach (Intervalo intervalo in intervalos)
                 {
-                    
+
                     if (intervalo.estaEnIntervalo(rnd))
                     {
                         intervalo.Frecuencia_observada += 1;
+                        intervalo.Frecuencia_relativa += Math.Round(1 / Convert.ToDouble(listrnd.Count), 4);
+
                         break;
                     }
+                }
+            }
+            for (int i = 0; i < intervalos.Count; i++)
+            {
+                if (i != 0)
+                {
+                    intervalos[i].Frecuencia_relativa_acumulada = Math.Round(intervalos[i - 1].Frecuencia_relativa_acumulada + intervalos[i].Frecuencia_relativa, 4);
+                    intervalos[i].Frecuencia_acumulada = intervalos[i - 1].Frecuencia_acumulada + intervalos[i].Frecuencia_observada;
+                }
+                else
+                {
+                    intervalos[i].Frecuencia_relativa_acumulada = intervalos[i].Frecuencia_relativa;
+                    intervalos[i].Frecuencia_acumulada = intervalos[i].Frecuencia_observada;
                 }
             }
         }
@@ -142,17 +160,26 @@ namespace TP_SIM
             listaNumeros.DataSource = numerosRND;
             txtM.Text = Math.Pow(2, g).ToString();
 
-            if (cmbIntervalos.SelectedIndex == 0)
+            if (cmb_Metodo.SelectedIndex == 0)
             {
                 txtMaxPeriodo.Text = txtM.Text;
             }
-            else 
+            else
             {
                 var calculo = int.Parse(txtM.Text) / 4;
                 txtMaxPeriodo.Text = calculo.ToString();
             }
         }
 
+        //Esta funcion se encarga de ir llenando la lista con los valores que le son asignados.
+        private void llenarGrilla(List<Intervalo> intervalos)
+        {
+            foreach (Intervalo intervalo in intervalos)
+            {
+                dgIntervalos.Rows.Add(intervalo.Num_iteracion, intervalo.Valor_inf, intervalo.Valor_sup, intervalo.Marca_clase, intervalo.Frecuencia_observada, 
+                    intervalo.Frecuencia_relativa, intervalo.Frecuencia_acumulada, intervalo.Frecuencia_relativa_acumulada, intervalo.Frecuencia_esperada);
+            }
+        }
 
         //Esta funcion toma la seleccion que se hace del numero de intervalos que se quiere y genera la grilla
         //con los datos correspondientes.
@@ -164,9 +191,11 @@ namespace TP_SIM
             int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
             List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
-            dgIntervalos.DataSource = intervalos;
+            llenarGrilla(intervalos);
+            //dgIntervalos.DataSource = intervalos;
             this.intervalos = intervalos;
             intervalos = new List<Intervalo>();
+            btnIntervalos.Enabled = false;
         }
 
 
@@ -179,19 +208,20 @@ namespace TP_SIM
             private double marca_clase;
             private int frecuencia_observada;
             private int frecuencia_esperada;
-            private int frecuencia_relativa;
+            private double frecuencia_relativa;
             private int frecuencia_acumulada;
-            private int frecuencia_relativa_acumulada;
+            private double frecuencia_relativa_acumulada;
 
             public int Num_iteracion { get => numIteracion; set => numIteracion = value; }
             public double Valor_inf { get => valor_inf; set => valor_inf = value; }
             public double Valor_sup { get => valor_sup; set => valor_sup = value; }
             public double Marca_clase { get => marca_clase; set => marca_clase = value; }
             public int Frecuencia_observada { get => frecuencia_observada; set => frecuencia_observada = value; }
-            public int Frecuencia_esperada { get => frecuencia_esperada; set => frecuencia_esperada = value; }
-            public int Frecuencia_relativa { get => frecuencia_relativa; set => frecuencia_relativa = value; }
             public int Frecuencia_acumulada { get => frecuencia_acumulada; set => frecuencia_acumulada = value; }
-            public int Frecuencia_relativa_acumulada { get => frecuencia_relativa_acumulada; set => frecuencia_relativa_acumulada = value; }
+            public double Frecuencia_relativa { get => frecuencia_relativa; set => frecuencia_relativa = value; }
+            public double Frecuencia_relativa_acumulada { get => frecuencia_relativa_acumulada; set => frecuencia_relativa_acumulada = value; }
+            public int Frecuencia_esperada { get => frecuencia_esperada; set => frecuencia_esperada = value; }
+
 
             public bool estaEnIntervalo(double rnd)
             {
@@ -226,7 +256,7 @@ namespace TP_SIM
                 txtC.Text = 0.ToString();
                 txtC.Enabled = false;
             }
-            else 
+            else
             {
                 txtC.Enabled = true;
                 txtC.Text = "";
@@ -254,6 +284,34 @@ namespace TP_SIM
         private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnIntervalos.Enabled = true;
+            dgIntervalos.Rows.Clear();
+            btnHistograma.Enabled = false;
+        }
+
+
+        private double calculoChiTAB(int cant_intervalos)
+        {
+            //grados de libertad
+            int v = cant_intervalos - 1;
+            return valores_chi[v + 1];
+        }
+
+
+        private double calculoChiCALC(List<Intervalo> intervalos)
+        {
+            double acumulador = 0;
+            double c = 0;
+            foreach (Intervalo interv in intervalos)
+            {
+                c = Math.Round(Math.Pow((interv.Frecuencia_esperada - interv.Frecuencia_observada), 2) / interv.Frecuencia_esperada, 4);
+                acumulador += c;
+            }
+            return c;
+        }
+
+        private void btnLimpiarHistograma_Click(object sender, EventArgs e)
+        {
+            //chart1.Series.Clear();
         }
     }
 }
