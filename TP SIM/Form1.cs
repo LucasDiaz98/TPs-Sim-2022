@@ -543,6 +543,27 @@ namespace TP_SIM
             }
         }
 
+        private double KSCalculado(List<Intervalo> intervalos, double n)
+        {
+            double mayor = 0;
+            double pfo_ac = 0;
+            double pfe_ac = 0;
+            double c = 0;
+            foreach (Intervalo intervalo in intervalos)
+            {
+                pfo_ac += Math.Round(intervalo.Frecuencia_observada / n, 4);
+                pfe_ac += Math.Round(intervalo.Frecuencia_esperada / n, 4);
+                c = Math.Abs(pfo_ac - pfe_ac);
+                if(c> mayor)
+                {
+                    mayor = c;
+                }
+            }
+            return mayor;
+
+
+        }
+
         private void valoresNoVacios()
         {
             
