@@ -32,22 +32,29 @@ namespace TP_SIM
         }
 
 
-        //Aca se hace la carga de datos del formulario.
+        //Aca se hace la carga de datos del formulario en el load.
         private void Form1_Load(object sender, EventArgs e)
         {
+            txt_numSimulaciones.Enabled = false;
             btnIntervalos.Enabled = false;
             btnHistograma.Enabled = false;
             btnGenerar.Enabled = false;
             cmb_Metodo.Items.Add("Metodo lineal congruente mixto");
             cmb_Metodo.Items.Add("Metodo lineal congruente multiplicativo");
+            cmb_Metodo.Items.Add("Metodo generador del lenguaje");
             cmbIntervalos.Items.Add("5");
             cmbIntervalos.Items.Add("8");
             cmbIntervalos.Items.Add("10");
             cmbIntervalos.Items.Add("12");
+            btnLimpiarHistograma.Enabled = false;
+            cmbChi.Items.Add("Prueba de chi-cuadrado");
+            chart1.Titles["Frecuencia observada"].Visible = false;
+            chart1.Titles["Frecuencia esperada"].Visible = false;
+            chart1.Titles["Histograma de frecuencias"].Visible = false;
         }
 
 
-        //Esta funcion es la que se encarga de ...
+        //Esta funcion es la que se encarga de crear los intervalos. (VER)
         private List<Intervalo> generarIntervalos(double n)
         {
             List<Intervalo> intervalos = new List<Intervalo>();
@@ -63,7 +70,8 @@ namespace TP_SIM
         }
 
 
-        //Esta funcion se encarga de ...
+        //Esta funcion se encarga de la creacion de un objeto definiendo el valor que van a
+        //tener sus variables y los agrega a una lista de intervalos. (VER)
         private Intervalo generarObjetoIntervalo(double inf, double sup, int iteracion)
         {
             Intervalo intervalo = new Intervalo()
@@ -73,7 +81,6 @@ namespace TP_SIM
                 Marca_clase = Math.Round(((inf + sup) / 2), 4),
                 Frecuencia_observada = 0,
                 Num_iteracion = iteracion,
-                //VER
                 Frecuencia_esperada = 0,
                 Frecuencia_relativa = 0,
                 Frecuencia_acumulada = 0,
@@ -152,35 +159,62 @@ namespace TP_SIM
             //{
             //    mensajeError += "-El valor ingresado para k no es valido \n";
             //}
-            k = Convert.ToDouble(txtK.Text);
-            c = Convert.ToDouble(txtC.Text);
-            g = Convert.ToDouble(txtG.Text);
-            semilla = Convert.ToDouble(txtSemilla.Text);
-            numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
-            numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
-            listaNumeros.DataSource = numerosRND;
-            txtM.Text = Math.Pow(2, g).ToString();
-
-            if (cmb_Metodo.SelectedIndex == 0)
+            
+            if (cmb_Metodo.SelectedIndex == 2)
             {
-                txtMaxPeriodo.Text = txtM.Text;
+                numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
+                numerosRND = generadorLenguajeNumerosAleatorios(numSimulaciones);
+                listaNumeros.DataSource = numerosRND;
             }
             else
             {
-                var calculo = int.Parse(txtM.Text) / 4;
-                txtMaxPeriodo.Text = calculo.ToString();
+                k = Convert.ToDouble(txtK.Text);
+                c = Convert.ToDouble(txtC.Text);
+                g = Convert.ToDouble(txtG.Text);
+                semilla = Convert.ToDouble(txtSemilla.Text);
+                numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
+                numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
+                listaNumeros.DataSource = numerosRND;
+                txtM.Text = Math.Pow(2, g).ToString();
+                if (cmb_Metodo.SelectedIndex == 0)
+                {
+                    txtMaxPeriodo.Text = txtM.Text;
+                }
+                else
+                {
+                    var calculo = int.Parse(txtM.Text) / 4;
+                    txtMaxPeriodo.Text = calculo.ToString();
+                }
             }
+            
         }
 
-        //Esta funcion se encarga de ir llenando la lista con los valores que le son asignados.
+
+        //Esta funcion se encarga de generar los numeros aleatorios con el generador del lenguaje.
+        private List<double> generadorLenguajeNumerosAleatorios(double nroSim)
+        {
+            List<double> numerosRandom = new List<double>();
+            var random = new Random((int)nroSim);
+            double rand;
+            for (int i = 0; i < nroSim; i++)
+            {
+                rand = Math.Round((random.NextDouble()), 4);
+                numerosRandom.Add(rand);
+            }
+            return numerosRandom;
+        }
+
+
+        //Esta funcion se encarga de ir llenando la grilla con los valores que le son asignados. (VER ESTE COMENTARIO)
         private void llenarGrilla(List<Intervalo> intervalos)
         {
             foreach (Intervalo intervalo in intervalos)
             {
-                dgIntervalos.Rows.Add(intervalo.Num_iteracion, intervalo.Valor_inf, intervalo.Valor_sup, intervalo.Marca_clase, intervalo.Frecuencia_observada, 
+                dgIntervalos.Rows.Add(intervalo.Num_iteracion, intervalo.Valor_inf, intervalo.Valor_sup, intervalo.Marca_clase, intervalo.Frecuencia_observada,
                     intervalo.Frecuencia_relativa, intervalo.Frecuencia_acumulada, intervalo.Frecuencia_relativa_acumulada, intervalo.Frecuencia_esperada);
             }
         }
+
 
         //Esta funcion toma la seleccion que se hace del numero de intervalos que se quiere y genera la grilla
         //con los datos correspondientes.
@@ -224,6 +258,7 @@ namespace TP_SIM
             public int Frecuencia_esperada { get => frecuencia_esperada; set => frecuencia_esperada = value; }
 
 
+            //Esta funcion se encarga de ..
             public bool estaEnIntervalo(double rnd)
             {
                 return (this.valor_inf <= rnd && rnd < this.valor_sup);
@@ -237,35 +272,72 @@ namespace TP_SIM
         }
 
 
-        //Esta funcion es la que se encarga de generar el histograma.
+        //Esta funcion se encarga de generar el histograma.
         private void btnHistograma_Click(object sender, EventArgs e)
         {
+            cmbIntervalos.Enabled = false;
+            btnLimpiarHistograma.Enabled = true;
             chart1.AlignDataPointsByAxisLabel();
             for (int i = 0; i < intervalos.Count; i++)
             {
                 chart1.Series["Frecuencia observada"].Points.AddXY(intervalos[i].intervaloString(), intervalos[i].Frecuencia_observada);
                 chart1.Series["Frecuencia esperada"].Points.AddY(intervalos[i].Frecuencia_esperada);
             }
-            chart1.Titles.Add("Histograma de frecuencias");
             chart1.Series[0]["PointWidth"] = "1";
             btnHistograma.Enabled = false;
+            chart1.ChartAreas[0].AxisX.Minimum = 0;
+            chart1.ChartAreas[0].AxisX.Maximum = 10;
+            chart1.Titles["Frecuencia observada"].Visible = true;
+            chart1.Titles["Frecuencia esperada"].Visible = true;
+            chart1.Titles["Histograma de frecuencias"].Visible = true;
         }
 
 
-        //Esta funcion nos permite validar que segun el metodo que se elija, estara habilitada o no la opcion de agregar un valor a "c".
+        //Esta funcion nos permite validar que segun el metodo que se elija, estara habilitada o no la opcion de agregar un valor a "c" y los demas textbox.
         private void cmb_Metodo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txt_numSimulaciones.Enabled = true;
             btnGenerar.Enabled = true;
-            if (cmb_Metodo.SelectedIndex == 1)
+            if (cmb_Metodo.SelectedIndex == 2)
             {
-                txtC.Text = 0.ToString();
+                txtG.Enabled = false;
+                txtK.Enabled = false;
+                txtM.Enabled = false;
+                txtSemilla.Enabled = false;
                 txtC.Enabled = false;
+                txtC.Text = "";
+                txtSemilla.Text = "";
+                txtK.Text = "";
+                txtG.Text = "";
             }
             else
             {
-                txtC.Enabled = true;
-                txtC.Text = "";
+                if (cmb_Metodo.SelectedIndex == 1)
+                {
+                    txtC.Text = 0.ToString();
+                    txtC.Enabled = false;
+                    txtG.Enabled = true;
+                    txtK.Enabled = true;
+                    txtSemilla.Enabled = true;
+                    txtC.Text = "";
+                    txtSemilla.Text = "";
+                    txtK.Text = "";
+                    txtG.Text = "";
+                }
+                else
+                {
+                    txtG.Enabled = true;
+                    txtK.Enabled = true;
+                    txtSemilla.Enabled = true;
+                    txtC.Enabled = true;
+                    txtC.Text = "";
+                    txtC.Text = "";
+                    txtSemilla.Text = "";
+                    txtK.Text = "";
+                    txtG.Text = "";
+                }
             }
+            
         }
 
 
@@ -282,11 +354,10 @@ namespace TP_SIM
             cmb_Metodo.SelectedIndex = -1;
             listaNumeros.DataSource = null;
             listaNumeros.Items.Clear();
-            btnHistograma.Enabled = true;
         }
 
 
-        //Esta funcion cambia el estado del boton "Calcular intervalos" al elegir una cantidad de intervalos.
+        //Esta funcion cambia el estado (habilitado/desabilitado) del boton "Calcular intervalos" al elegir una cantidad de intervalos.
         private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnIntervalos.Enabled = true;
@@ -299,7 +370,7 @@ namespace TP_SIM
         {
             //grados de libertad
             int v = cant_intervalos - 1;
-            return valores_chi[v + 1];
+            return valores_chi[v-1];
         }
 
 
@@ -312,9 +383,31 @@ namespace TP_SIM
                 c = Math.Round(Math.Pow((interv.Frecuencia_esperada - interv.Frecuencia_observada), 2) / interv.Frecuencia_esperada, 4);
                 acumulador += c;
             }
-            return c;
+            return acumulador;
         }
 
+
+        private void btnPrueba_Click(object sender, EventArgs e)
+        {
+            double chi_calc = calculoChiCALC(intervalos);
+            double chi_tab = calculoChiTAB(intervalos.Count);
+
+            txtChiCalc.Text = chi_calc.ToString();
+            txtChiTab.Text = chi_tab.ToString();
+            if (chi_calc <= chi_tab)
+            {
+                txtChiConclusion.ForeColor = Color.Green;
+                txtChiConclusion.Text = "No rechazada";
+            }
+            else
+            {
+                txtChiConclusion.ForeColor = Color.Red;
+                txtChiConclusion.Text = "Rechazada";
+            }
+        }
+
+
+        //Esta funcion se encarga de limpiar el chart donde esta el grafico del histograma.
         private void btnLimpiarHistograma_Click(object sender, EventArgs e)
         {
             foreach (var series in chart1.Series)
@@ -322,6 +415,53 @@ namespace TP_SIM
                 series.Points.Clear();
             }
             btnHistograma.Enabled = true;
+            cmbIntervalos.Enabled = true;
+            chart1.Titles["Frecuencia observada"].Visible = false;
+            chart1.Titles["Frecuencia esperada"].Visible = false;
+            chart1.Titles["Histograma de frecuencias"].Visible = false;
         }
+
+
+        //Estas funciones validan que solo se pueda colocar numeros enteros dentro de los textbox.
+        private void txt_numSimulaciones_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSemilla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }
