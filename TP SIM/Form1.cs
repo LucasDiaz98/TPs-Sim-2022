@@ -39,6 +39,7 @@ namespace TP_SIM
             btnIntervalos.Enabled = false;
             btnHistograma.Enabled = false;
             btnGenerar.Enabled = false;
+            cmbIntervalos.Enabled = false;
             cmb_Metodo.Items.Add("Metodo lineal congruente mixto");
             cmb_Metodo.Items.Add("Metodo lineal congruente multiplicativo");
             cmb_Metodo.Items.Add("Metodo generador del lenguaje");
@@ -130,7 +131,7 @@ namespace TP_SIM
 
         //Esta funcion es la que se encarga de generar los numeros aleatorios, recibe como parametros la semilla,
         //una constante g, una constante k, el incremento c y el numero de simulaciones. Todos estos numeros
-        //aleatorios generados son guardados dentro de una lista.
+        //aleatorios generados son guardados dentro de una grilla.
         private List<double> generadorNumerosAleatorios(double semilla, double g, double k, double c, double n)
         {
             double multiplicador = 1 + 4 * k;
@@ -154,15 +155,27 @@ namespace TP_SIM
         //Esta funcion se encarga de tomar todos los datos ingresados por el usuario y muestra la lista generada de numeros aleatorios.
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            cmbIntervalos.Enabled = true;
             numerosRND.Clear();
             dgRND.Rows.Clear();
-            
+
+            //double media = calculoMedia(dgIntervalos, intervalos.Count);
+            //lblMedia.Text
+
             if (cmb_Metodo.SelectedIndex == 2)
             {
-                numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
-                numerosRND = generadorLenguajeNumerosAleatorios(numSimulaciones);
-                llenarGrillaRND(numerosRND);
-                listaNumeros.DataSource = numerosRND;
+                if (txt_numSimulaciones.Text == "")
+                {
+                    MessageBox.Show("Por favor asegurese de llenar todos los campos disponibles", "Error en la carga de datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else 
+                {
+                    numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
+                    numerosRND = generadorLenguajeNumerosAleatorios(numSimulaciones);
+                    llenarGrillaRND(numerosRND);
+                    //listaNumeros.DataSource = numerosRND;
+                }
+                
             }
             else
             {
@@ -179,7 +192,7 @@ namespace TP_SIM
                     numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
                     numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
                     llenarGrillaRND(numerosRND);
-                    listaNumeros.DataSource = numerosRND;
+                    //listaNumeros.DataSource = numerosRND;
                     txtM.Text = Math.Pow(2, g).ToString();
                     if (cmb_Metodo.SelectedIndex == 0)
                     {
@@ -370,8 +383,8 @@ namespace TP_SIM
             cmb_Metodo.SelectedIndex = -1;
             dgRND.Rows.Clear();
             numerosRND.Clear();
-            listaNumeros.DataSource = null;
-            listaNumeros.Items.Clear();
+            //listaNumeros.DataSource = null;
+            //listaNumeros.Items.Clear();
         }
 
 
@@ -409,6 +422,16 @@ namespace TP_SIM
             return acumulador;
         }
 
+        //private double calculoMedia(List<Intervalo> intervalos, int n)
+        //{
+        //    double media = 0;
+        //    double suma = 0;
+        //    foreach (Intervalo interv in intervalos)
+        //    {
+        //        suma = suma + (interv.Frecuencia_observada * interv.Marca_clase);
+        //    }
+        //    return suma;
+        //}
 
         private void btnPrueba_Click(object sender, EventArgs e)
         {
@@ -491,6 +514,5 @@ namespace TP_SIM
         {
             
         }
-
     }
 }
