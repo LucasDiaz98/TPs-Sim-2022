@@ -21,8 +21,8 @@ namespace TP_SIM
         double semilla = 0;
         double numSimulaciones = 0;
         string mensajeError = "";
-        List<double> numerosRND;
-        List<Intervalo> intervalos;
+        List<double> numerosRND = new List<double>();
+        List<Intervalo> intervalos = new List<Intervalo>();
         double[] valores_chi = { 3.84, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7 };
 
 
@@ -154,37 +154,45 @@ namespace TP_SIM
         //Esta funcion se encarga de tomar todos los datos ingresados por el usuario y muestra la lista generada de numeros aleatorios.
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            //if (Double.TryParse(txtK.Text, out k)) ;
-            //else
-            //{
-            //    mensajeError += "-El valor ingresado para k no es valido \n";
-            //}
+            numerosRND.Clear();
+            dgRND.Rows.Clear();
             
             if (cmb_Metodo.SelectedIndex == 2)
             {
                 numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
                 numerosRND = generadorLenguajeNumerosAleatorios(numSimulaciones);
+                llenarGrillaRND(numerosRND);
                 listaNumeros.DataSource = numerosRND;
             }
             else
             {
-                k = Convert.ToDouble(txtK.Text);
-                c = Convert.ToDouble(txtC.Text);
-                g = Convert.ToDouble(txtG.Text);
-                semilla = Convert.ToDouble(txtSemilla.Text);
-                numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
-                numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
-                listaNumeros.DataSource = numerosRND;
-                txtM.Text = Math.Pow(2, g).ToString();
-                if (cmb_Metodo.SelectedIndex == 0)
+                if (txt_numSimulaciones.Text == "" || txtSemilla.Text == "" || txtK.Text == "" || txtG.Text == "" || txtC.Text == "")
                 {
-                    txtMaxPeriodo.Text = txtM.Text;
+                    MessageBox.Show("Por favor asegurese de llenar todos los campos disponibles", "Error en la carga de datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    var calculo = int.Parse(txtM.Text) / 4;
-                    txtMaxPeriodo.Text = calculo.ToString();
+                    k = Convert.ToDouble(txtK.Text);
+                    c = Convert.ToDouble(txtC.Text);
+                    g = Convert.ToDouble(txtG.Text);
+                    semilla = Convert.ToDouble(txtSemilla.Text);
+                    numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
+                    numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
+                    llenarGrillaRND(numerosRND);
+                    listaNumeros.DataSource = numerosRND;
+                    txtM.Text = Math.Pow(2, g).ToString();
+                    if (cmb_Metodo.SelectedIndex == 0)
+                    {
+                        txtMaxPeriodo.Text = txtM.Text;
+                    }
+                    else
+                    {
+                        var calculo = int.Parse(txtM.Text) / 4;
+                        txtMaxPeriodo.Text = calculo.ToString();
+                    }
+
                 }
+                                
             }
             
         }
@@ -206,12 +214,20 @@ namespace TP_SIM
 
 
         //Esta funcion se encarga de ir llenando la grilla con los valores que le son asignados. (VER ESTE COMENTARIO)
-        private void llenarGrilla(List<Intervalo> intervalos)
+        private void llenarGrillaIntervalos(List<Intervalo> intervalos)
         {
             foreach (Intervalo intervalo in intervalos)
             {
                 dgIntervalos.Rows.Add(intervalo.Num_iteracion, intervalo.Valor_inf, intervalo.Valor_sup, intervalo.Marca_clase, intervalo.Frecuencia_observada,
                     intervalo.Frecuencia_relativa, intervalo.Frecuencia_acumulada, intervalo.Frecuencia_relativa_acumulada, intervalo.Frecuencia_esperada);
+            }
+        }
+
+        private void llenarGrillaRND(List<double> randoms)
+        {
+            for (int i = 0; i < randoms.Count; i++)
+            {
+                dgRND.Rows.Add(i + 1, randoms[i]);
             }
         }
 
@@ -226,11 +242,11 @@ namespace TP_SIM
             int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
             List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
-            llenarGrilla(intervalos);
-            //dgIntervalos.DataSource = intervalos;
+            llenarGrillaIntervalos(intervalos);
             this.intervalos = intervalos;
             intervalos = new List<Intervalo>();
             btnIntervalos.Enabled = false;
+            btnPrueba.Enabled = true;
         }
 
 
@@ -319,7 +335,7 @@ namespace TP_SIM
                     txtG.Enabled = true;
                     txtK.Enabled = true;
                     txtSemilla.Enabled = true;
-                    txtC.Text = "";
+                    txtC.Text = "0";
                     txtSemilla.Text = "";
                     txtK.Text = "";
                     txtG.Text = "";
@@ -352,6 +368,8 @@ namespace TP_SIM
             txtC.Text = "";
             txtMaxPeriodo.Text = "";
             cmb_Metodo.SelectedIndex = -1;
+            dgRND.Rows.Clear();
+            numerosRND.Clear();
             listaNumeros.DataSource = null;
             listaNumeros.Items.Clear();
         }
@@ -363,6 +381,11 @@ namespace TP_SIM
             btnIntervalos.Enabled = true;
             dgIntervalos.Rows.Clear();
             btnHistograma.Enabled = false;
+            btnPrueba.Enabled = false;
+            if (intervalos.Count != 0)
+            {
+                intervalos.Clear();
+            }
         }
 
 
@@ -392,17 +415,17 @@ namespace TP_SIM
             double chi_calc = calculoChiCALC(intervalos);
             double chi_tab = calculoChiTAB(intervalos.Count);
 
-            txtChiCalc.Text = chi_calc.ToString();
-            txtChiTab.Text = chi_tab.ToString();
+            lblChiCalc.Text = chi_calc.ToString();
+            lblChiTab.Text = chi_tab.ToString();
             if (chi_calc <= chi_tab)
             {
-                txtChiConclusion.ForeColor = Color.Green;
-                txtChiConclusion.Text = "No rechazada";
+                lblChiConclusion.ForeColor = Color.Green;
+                lblChiConclusion.Text = "No rechazada";
             }
             else
             {
-                txtChiConclusion.ForeColor = Color.Red;
-                txtChiConclusion.Text = "Rechazada";
+                lblChiConclusion.ForeColor = Color.Red;
+                lblChiConclusion.Text = "Rechazada";
             }
         }
 
@@ -431,6 +454,7 @@ namespace TP_SIM
             }
         }
 
+        
         private void txtSemilla_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -461,6 +485,11 @@ namespace TP_SIM
             {
                 e.Handled = true;
             }
+        }
+
+        private void valoresNoVacios()
+        {
+            
         }
 
     }
