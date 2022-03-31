@@ -37,11 +37,13 @@ namespace TP_SIM
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Metodo = new System.Windows.Forms.GroupBox();
+            this.dgRND = new System.Windows.Forms.DataGridView();
+            this.colIteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtMaxPeriodo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.txtM = new System.Windows.Forms.TextBox();
-            this.listaNumeros = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.txt_numSimulaciones = new System.Windows.Forms.TextBox();
@@ -81,13 +83,14 @@ namespace TP_SIM
             this.lblChiCalc = new System.Windows.Forms.Label();
             this.lblChiTab = new System.Windows.Forms.Label();
             this.lblChiConclusion = new System.Windows.Forms.Label();
-            this.dgRND = new System.Windows.Forms.DataGridView();
-            this.colIteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblMedia = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblVarianza = new System.Windows.Forms.Label();
             this.Metodo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRND)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRND)).BeginInit();
             this.SuspendLayout();
             // 
             // Metodo
@@ -116,6 +119,29 @@ namespace TP_SIM
             this.Metodo.Size = new System.Drawing.Size(691, 248);
             this.Metodo.TabIndex = 0;
             this.Metodo.TabStop = false;
+            // 
+            // dgRND
+            // 
+            this.dgRND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRND.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIteracion,
+            this.colRND});
+            this.dgRND.Location = new System.Drawing.Point(457, 19);
+            this.dgRND.Name = "dgRND";
+            this.dgRND.Size = new System.Drawing.Size(213, 150);
+            this.dgRND.TabIndex = 29;
+            // 
+            // colIteracion
+            // 
+            this.colIteracion.HeaderText = "Iteración";
+            this.colIteracion.Name = "colIteracion";
+            this.colIteracion.Width = 50;
+            // 
+            // colRND
+            // 
+            this.colRND.HeaderText = "RND";
+            this.colRND.Name = "colRND";
+            this.colRND.Width = 120;
             // 
             // txtMaxPeriodo
             // 
@@ -151,14 +177,6 @@ namespace TP_SIM
             this.txtM.Name = "txtM";
             this.txtM.Size = new System.Drawing.Size(86, 20);
             this.txtM.TabIndex = 8;
-            // 
-            // listaNumeros
-            // 
-            this.listaNumeros.FormattingEnabled = true;
-            this.listaNumeros.Location = new System.Drawing.Point(226, 302);
-            this.listaNumeros.Name = "listaNumeros";
-            this.listaNumeros.Size = new System.Drawing.Size(215, 199);
-            this.listaNumeros.TabIndex = 700;
             // 
             // label7
             // 
@@ -543,40 +561,56 @@ namespace TP_SIM
             this.lblChiConclusion.TabIndex = 28;
             this.lblChiConclusion.Text = "-";
             // 
-            // dgRND
+            // label13
             // 
-            this.dgRND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRND.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colIteracion,
-            this.colRND});
-            this.dgRND.Location = new System.Drawing.Point(452, 19);
-            this.dgRND.Name = "dgRND";
-            this.dgRND.Size = new System.Drawing.Size(213, 150);
-            this.dgRND.TabIndex = 29;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1582, 382);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 13);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Media";
             // 
-            // colIteracion
+            // lblMedia
             // 
-            this.colIteracion.HeaderText = "Iteración";
-            this.colIteracion.Name = "colIteracion";
-            this.colIteracion.Width = 50;
+            this.lblMedia.AutoSize = true;
+            this.lblMedia.Location = new System.Drawing.Point(1643, 382);
+            this.lblMedia.Name = "lblMedia";
+            this.lblMedia.Size = new System.Drawing.Size(10, 13);
+            this.lblMedia.TabIndex = 30;
+            this.lblMedia.Text = "-";
             // 
-            // colRND
+            // label14
             // 
-            this.colRND.HeaderText = "RND";
-            this.colRND.Name = "colRND";
-            this.colRND.Width = 120;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(1582, 415);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 13);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Varianza";
+            // 
+            // lblVarianza
+            // 
+            this.lblVarianza.AutoSize = true;
+            this.lblVarianza.Location = new System.Drawing.Point(1643, 415);
+            this.lblVarianza.Name = "lblVarianza";
+            this.lblVarianza.Size = new System.Drawing.Size(10, 13);
+            this.lblVarianza.TabIndex = 32;
+            this.lblVarianza.Text = "-";
             // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1819, 838);
+            this.Controls.Add(this.lblVarianza);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblMedia);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.lblChiConclusion);
             this.Controls.Add(this.lblChiTab);
             this.Controls.Add(this.lblChiCalc);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.btnPrueba);
-            this.Controls.Add(this.listaNumeros);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -595,9 +629,9 @@ namespace TP_SIM
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Metodo.ResumeLayout(false);
             this.Metodo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRND)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRND)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,7 +653,6 @@ namespace TP_SIM
         private System.Windows.Forms.TextBox txtK;
         private System.Windows.Forms.TextBox txtSemilla;
         private System.Windows.Forms.Button btnGenerar;
-        private System.Windows.Forms.ListBox listaNumeros;
         private System.Windows.Forms.Button btnHistograma;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TextBox txtM;
@@ -653,6 +686,10 @@ namespace TP_SIM
         private System.Windows.Forms.DataGridView dgRND;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIteracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRND;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblMedia;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblVarianza;
     }
 }
 
