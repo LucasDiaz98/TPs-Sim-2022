@@ -33,6 +33,9 @@ namespace TP_SIM
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Metodo = new System.Windows.Forms.GroupBox();
             this.txtMaxPeriodo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -57,17 +60,26 @@ namespace TP_SIM
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnIntervalos = new System.Windows.Forms.Button();
             this.dgIntervalos = new System.Windows.Forms.DataGridView();
+            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
+            this.btnLimpiarHistograma = new System.Windows.Forms.Button();
+            this.cmbChi = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtChiCalc = new System.Windows.Forms.TextBox();
+            this.txtChiTab = new System.Windows.Forms.TextBox();
+            this.txtChiConclusion = new System.Windows.Forms.TextBox();
+            this.btnPrueba = new System.Windows.Forms.Button();
             this.Nro_Iteraciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor_inf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor_sup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca_clase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_observada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Frecuencia_esperada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_relativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_relativa_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
-            this.btnLimpiarHistograma = new System.Windows.Forms.Button();
+            this.Frecuencia_esperada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Metodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
@@ -79,6 +91,7 @@ namespace TP_SIM
             this.Metodo.Controls.Add(this.label8);
             this.Metodo.Controls.Add(this.btnLimpiar);
             this.Metodo.Controls.Add(this.txtM);
+            this.Metodo.Controls.Add(this.listaNumeros);
             this.Metodo.Controls.Add(this.label7);
             this.Metodo.Controls.Add(this.btnGenerar);
             this.Metodo.Controls.Add(this.txt_numSimulaciones);
@@ -93,9 +106,9 @@ namespace TP_SIM
             this.Metodo.Controls.Add(this.txtSemilla);
             this.Metodo.Controls.Add(this.label1);
             this.Metodo.Controls.Add(this.cmb_Metodo);
-            this.Metodo.Location = new System.Drawing.Point(12, 74);
+            this.Metodo.Location = new System.Drawing.Point(12, 41);
             this.Metodo.Name = "Metodo";
-            this.Metodo.Size = new System.Drawing.Size(429, 248);
+            this.Metodo.Size = new System.Drawing.Size(691, 248);
             this.Metodo.TabIndex = 0;
             this.Metodo.TabStop = false;
             // 
@@ -118,9 +131,9 @@ namespace TP_SIM
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(131, 169);
+            this.btnLimpiar.Location = new System.Drawing.Point(276, 181);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(64, 20);
+            this.btnLimpiar.Size = new System.Drawing.Size(78, 37);
             this.btnLimpiar.TabIndex = 10;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -145,9 +158,9 @@ namespace TP_SIM
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(219, 169);
+            this.btnGenerar.Location = new System.Drawing.Point(166, 181);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(64, 20);
+            this.btnGenerar.Size = new System.Drawing.Size(96, 37);
             this.btnGenerar.TabIndex = 9;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -159,6 +172,7 @@ namespace TP_SIM
             this.txt_numSimulaciones.Name = "txt_numSimulaciones";
             this.txt_numSimulaciones.Size = new System.Drawing.Size(62, 20);
             this.txt_numSimulaciones.TabIndex = 2;
+            this.txt_numSimulaciones.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_numSimulaciones_KeyPress);
             // 
             // label6
             // 
@@ -211,6 +225,7 @@ namespace TP_SIM
             this.txtC.Name = "txtC";
             this.txtC.Size = new System.Drawing.Size(86, 20);
             this.txtC.TabIndex = 7;
+            this.txtC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtC_KeyPress);
             // 
             // txtG
             // 
@@ -218,6 +233,7 @@ namespace TP_SIM
             this.txtG.Name = "txtG";
             this.txtG.Size = new System.Drawing.Size(86, 20);
             this.txtG.TabIndex = 6;
+            this.txtG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtG_KeyPress);
             // 
             // txtK
             // 
@@ -225,6 +241,7 @@ namespace TP_SIM
             this.txtK.Name = "txtK";
             this.txtK.Size = new System.Drawing.Size(86, 20);
             this.txtK.TabIndex = 5;
+            this.txtK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtK_KeyPress);
             // 
             // txtSemilla
             // 
@@ -232,6 +249,7 @@ namespace TP_SIM
             this.txtSemilla.Name = "txtSemilla";
             this.txtSemilla.Size = new System.Drawing.Size(86, 20);
             this.txtSemilla.TabIndex = 4;
+            this.txtSemilla.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSemilla_KeyPress);
             // 
             // label1
             // 
@@ -255,10 +273,10 @@ namespace TP_SIM
             // listaNumeros
             // 
             this.listaNumeros.FormattingEnabled = true;
-            this.listaNumeros.Location = new System.Drawing.Point(475, 83);
+            this.listaNumeros.Location = new System.Drawing.Point(452, 19);
             this.listaNumeros.Name = "listaNumeros";
             this.listaNumeros.Size = new System.Drawing.Size(215, 199);
-            this.listaNumeros.TabIndex = 5;
+            this.listaNumeros.TabIndex = 700;
             // 
             // btnHistograma
             // 
@@ -276,10 +294,12 @@ namespace TP_SIM
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(143, 385);
+            this.chart1.Location = new System.Drawing.Point(91, 379);
             this.chart1.Name = "chart1";
             series1.BorderColor = System.Drawing.Color.Black;
             series1.ChartArea = "ChartArea1";
+            series1.CustomProperties = "LabelStyle=Bottom";
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             series1.IsValueShownAsLabel = true;
             series1.Legend = "Legend1";
             series1.Name = "Frecuencia observada";
@@ -291,9 +311,24 @@ namespace TP_SIM
             series2.Name = "Frecuencia esperada";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1223, 323);
+            this.chart1.Size = new System.Drawing.Size(1181, 327);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
+            title1.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title1.Name = "Frecuencia observada";
+            title1.Text = "Frecuencia observada";
+            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title2.Name = "Frecuencia esperada";
+            title2.Text = "Frecuencia esperada";
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            title3.Name = "Histograma de frecuencias";
+            title3.Text = "Histograma de frecuencias";
+            this.chart1.Titles.Add(title1);
+            this.chart1.Titles.Add(title2);
+            this.chart1.Titles.Add(title3);
             // 
             // btnIntervalos
             // 
@@ -316,16 +351,115 @@ namespace TP_SIM
             this.Valor_sup,
             this.Marca_clase,
             this.Frecuencia_observada,
-            this.Frecuencia_esperada,
             this.Frecuencia_relativa,
             this.Frecuencia_acumulada,
-            this.Frecuencia_relativa_acumulada});
-            this.dgIntervalos.Location = new System.Drawing.Point(709, 82);
+            this.Frecuencia_relativa_acumulada,
+            this.Frecuencia_esperada});
+            this.dgIntervalos.Location = new System.Drawing.Point(736, 85);
             this.dgIntervalos.Name = "dgIntervalos";
             this.dgIntervalos.ReadOnly = true;
             this.dgIntervalos.RowTemplate.Height = 25;
-            this.dgIntervalos.Size = new System.Drawing.Size(641, 200);
+            this.dgIntervalos.Size = new System.Drawing.Size(1006, 200);
             this.dgIntervalos.TabIndex = 4;
+            // 
+            // cmbIntervalos
+            // 
+            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIntervalos.FormattingEnabled = true;
+            this.cmbIntervalos.Location = new System.Drawing.Point(922, 41);
+            this.cmbIntervalos.Name = "cmbIntervalos";
+            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
+            this.cmbIntervalos.TabIndex = 11;
+            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
+            // 
+            // btnLimpiarHistograma
+            // 
+            this.btnLimpiarHistograma.Location = new System.Drawing.Point(586, 320);
+            this.btnLimpiarHistograma.Name = "btnLimpiarHistograma";
+            this.btnLimpiarHistograma.Size = new System.Drawing.Size(133, 36);
+            this.btnLimpiarHistograma.TabIndex = 14;
+            this.btnLimpiarHistograma.Text = "Limpiar histograma";
+            this.btnLimpiarHistograma.UseVisualStyleBackColor = true;
+            this.btnLimpiarHistograma.Click += new System.EventHandler(this.btnLimpiarHistograma_Click);
+            // 
+            // cmbChi
+            // 
+            this.cmbChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChi.FormattingEnabled = true;
+            this.cmbChi.Location = new System.Drawing.Point(1390, 379);
+            this.cmbChi.Name = "cmbChi";
+            this.cmbChi.Size = new System.Drawing.Size(121, 21);
+            this.cmbChi.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1289, 382);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Prueba de bondad";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1318, 452);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(66, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Chi tabulado";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1313, 415);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 13);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Chi calculado";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1329, 488);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Resultado";
+            // 
+            // txtChiCalc
+            // 
+            this.txtChiCalc.Enabled = false;
+            this.txtChiCalc.Location = new System.Drawing.Point(1390, 412);
+            this.txtChiCalc.Name = "txtChiCalc";
+            this.txtChiCalc.Size = new System.Drawing.Size(100, 20);
+            this.txtChiCalc.TabIndex = 21;
+            // 
+            // txtChiTab
+            // 
+            this.txtChiTab.Enabled = false;
+            this.txtChiTab.Location = new System.Drawing.Point(1390, 445);
+            this.txtChiTab.Name = "txtChiTab";
+            this.txtChiTab.Size = new System.Drawing.Size(100, 20);
+            this.txtChiTab.TabIndex = 22;
+            // 
+            // txtChiConclusion
+            // 
+            this.txtChiConclusion.Enabled = false;
+            this.txtChiConclusion.Location = new System.Drawing.Point(1390, 481);
+            this.txtChiConclusion.Name = "txtChiConclusion";
+            this.txtChiConclusion.Size = new System.Drawing.Size(100, 20);
+            this.txtChiConclusion.TabIndex = 23;
+            // 
+            // btnPrueba
+            // 
+            this.btnPrueba.Location = new System.Drawing.Point(1390, 525);
+            this.btnPrueba.Name = "btnPrueba";
+            this.btnPrueba.Size = new System.Drawing.Size(75, 23);
+            this.btnPrueba.TabIndex = 24;
+            this.btnPrueba.Text = "Probar";
+            this.btnPrueba.UseVisualStyleBackColor = true;
+            this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
             // 
             // Nro_Iteraciones
             // 
@@ -362,13 +496,6 @@ namespace TP_SIM
             this.Frecuencia_observada.ReadOnly = true;
             this.Frecuencia_observada.Width = 120;
             // 
-            // Frecuencia_esperada
-            // 
-            this.Frecuencia_esperada.HeaderText = "Frecuencia_esperada";
-            this.Frecuencia_esperada.Name = "Frecuencia_esperada";
-            this.Frecuencia_esperada.ReadOnly = true;
-            this.Frecuencia_esperada.Width = 113;
-            // 
             // Frecuencia_relativa
             // 
             this.Frecuencia_relativa.HeaderText = "Frecuencia_relativa";
@@ -390,36 +517,31 @@ namespace TP_SIM
             this.Frecuencia_relativa_acumulada.ReadOnly = true;
             this.Frecuencia_relativa_acumulada.Width = 173;
             // 
-            // cmbIntervalos
+            // Frecuencia_esperada
             // 
-            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIntervalos.FormattingEnabled = true;
-            this.cmbIntervalos.Location = new System.Drawing.Point(922, 41);
-            this.cmbIntervalos.Name = "cmbIntervalos";
-            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
-            this.cmbIntervalos.TabIndex = 11;
-            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
-            // 
-            // btnLimpiarHistograma
-            // 
-            this.btnLimpiarHistograma.Location = new System.Drawing.Point(586, 320);
-            this.btnLimpiarHistograma.Name = "btnLimpiarHistograma";
-            this.btnLimpiarHistograma.Size = new System.Drawing.Size(133, 36);
-            this.btnLimpiarHistograma.TabIndex = 14;
-            this.btnLimpiarHistograma.Text = "Limpiar histograma";
-            this.btnLimpiarHistograma.UseVisualStyleBackColor = true;
-            this.btnLimpiarHistograma.Click += new System.EventHandler(this.btnLimpiarHistograma_Click);
+            this.Frecuencia_esperada.HeaderText = "Frecuencia_esperada";
+            this.Frecuencia_esperada.Name = "Frecuencia_esperada";
+            this.Frecuencia_esperada.ReadOnly = true;
+            this.Frecuencia_esperada.Width = 113;
             // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.ClientSize = new System.Drawing.Size(1819, 838);
+            this.Controls.Add(this.btnPrueba);
+            this.Controls.Add(this.txtChiConclusion);
+            this.Controls.Add(this.txtChiTab);
+            this.Controls.Add(this.txtChiCalc);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cmbChi);
             this.Controls.Add(this.btnLimpiarHistograma);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnHistograma);
             this.Controls.Add(this.cmbIntervalos);
-            this.Controls.Add(this.listaNumeros);
             this.Controls.Add(this.dgIntervalos);
             this.Controls.Add(this.Metodo);
             this.Controls.Add(this.btnIntervalos);
@@ -432,6 +554,7 @@ namespace TP_SIM
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -462,16 +585,25 @@ namespace TP_SIM
         private System.Windows.Forms.Button btnIntervalos;
         private System.Windows.Forms.DataGridView dgIntervalos;
         private System.Windows.Forms.ComboBox cmbIntervalos;
+        private System.Windows.Forms.Button btnLimpiarHistograma;
+        private System.Windows.Forms.ComboBox cmbChi;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtChiCalc;
+        private System.Windows.Forms.TextBox txtChiTab;
+        private System.Windows.Forms.TextBox txtChiConclusion;
+        private System.Windows.Forms.Button btnPrueba;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nro_Iteraciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor_inf;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor_sup;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca_clase;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_observada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_esperada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_relativa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_acumulada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_relativa_acumulada;
-        private System.Windows.Forms.Button btnLimpiarHistograma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_esperada;
     }
 }
 
