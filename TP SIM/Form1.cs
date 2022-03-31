@@ -24,6 +24,7 @@ namespace TP_SIM
         List<double> numerosRND = new List<double>();
         List<Intervalo> intervalos = new List<Intervalo>();
         double[] valores_chi = { 3.84, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7 };
+        double[] valores_ks = { 0.97, 0.84, 0.70, 0.62, 0.56, 0.51, 0.48, 0.45, 0.43, 0.40, 0.39, 0.37 };
 
 
         public TP1()
@@ -49,6 +50,7 @@ namespace TP_SIM
             cmbIntervalos.Items.Add("12");
             btnLimpiarHistograma.Enabled = false;
             cmbChi.Items.Add("Prueba de chi-cuadrado");
+            cmbChi.Items.Add("Prueba de Ks");
             chart1.Titles["Frecuencia observada"].Visible = false;
             chart1.Titles["Frecuencia esperada"].Visible = false;
             chart1.Titles["Histograma de frecuencias"].Visible = false;
@@ -422,6 +424,27 @@ namespace TP_SIM
             return acumulador;
         }
 
+        public double calculoKSTAB(int cant_intervalos)
+        {
+            //grados de libertad
+            int v = cant_intervalos;
+            return valores_ks[v];
+        }
+
+
+        //public double calculoKSCAL(List<Intervalo> intervalos)
+        //{
+        //    double acum = 0;
+        //    foreach (Intervalo interv in intervalos)
+        //    {
+        //        var prob = (interv.Frecuencia_observada / int.Parse(txt_numSimulaciones.Text));
+        //        acum += prob;
+        //    }
+        //    return acum;
+        //}
+
+
+
         //private double calculoMedia(List<Intervalo> intervalos, int n)
         //{
         //    double media = 0;
@@ -435,21 +458,31 @@ namespace TP_SIM
 
         private void btnPrueba_Click(object sender, EventArgs e)
         {
-            double chi_calc = calculoChiCALC(intervalos);
-            double chi_tab = calculoChiTAB(intervalos.Count);
-
-            lblChiCalc.Text = chi_calc.ToString();
-            lblChiTab.Text = chi_tab.ToString();
-            if (chi_calc <= chi_tab)
+            if (cmbChi.SelectedIndex == 0)
             {
-                lblChiConclusion.ForeColor = Color.Green;
-                lblChiConclusion.Text = "No rechazada";
+                double chi_calc = calculoChiCALC(intervalos);
+                double chi_tab = calculoChiTAB(intervalos.Count);
+
+                lblChiCalc.Text = chi_calc.ToString();
+                lblChiTab.Text = chi_tab.ToString();
+                if (chi_calc <= chi_tab)
+                {
+                    lblChiConclusion.ForeColor = Color.Green;
+                    lblChiConclusion.Text = "No rechazada";
+                }
+                else
+                {
+                    lblChiConclusion.ForeColor = Color.Red;
+                    lblChiConclusion.Text = "Rechazada";
+                }
             }
             else
             {
-                lblChiConclusion.ForeColor = Color.Red;
-                lblChiConclusion.Text = "Rechazada";
+                double ks_cal = calculoKSTAB(intervalos.Count);
+
+                lblKsCal.Text = ks_cal.ToString();
             }
+            
         }
 
 
