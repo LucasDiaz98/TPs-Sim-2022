@@ -29,13 +29,13 @@ namespace TP_SIM
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Metodo = new System.Windows.Forms.GroupBox();
             this.dgRND = new System.Windows.Forms.DataGridView();
             this.colIteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +87,8 @@ namespace TP_SIM
             this.lblMedia = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.lblVarianza = new System.Windows.Forms.Label();
+            this.lblKsCal = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.Metodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRND)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -95,9 +97,13 @@ namespace TP_SIM
             // 
             // Metodo
             // 
+            this.Metodo.Controls.Add(this.lblVarianza);
             this.Metodo.Controls.Add(this.dgRND);
+            this.Metodo.Controls.Add(this.label14);
             this.Metodo.Controls.Add(this.txtMaxPeriodo);
+            this.Metodo.Controls.Add(this.lblMedia);
             this.Metodo.Controls.Add(this.label8);
+            this.Metodo.Controls.Add(this.label13);
             this.Metodo.Controls.Add(this.btnLimpiar);
             this.Metodo.Controls.Add(this.txtM);
             this.Metodo.Controls.Add(this.label7);
@@ -313,45 +319,58 @@ namespace TP_SIM
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            chartArea2.AxisX.IsStartedFromZero = false;
+            chartArea2.CursorX.IsUserEnabled = true;
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 85F;
+            chartArea2.InnerPlotPosition.Width = 100F;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 86.8034F;
+            chartArea2.Position.Width = 74.29581F;
+            chartArea2.Position.X = 7.704184F;
+            chartArea2.Position.Y = 13.1966F;
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(91, 379);
             this.chart1.Name = "chart1";
-            series1.BorderColor = System.Drawing.Color.Black;
-            series1.ChartArea = "ChartArea1";
-            series1.CustomProperties = "LabelStyle=Bottom";
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Frecuencia observada";
-            series2.BorderWidth = 4;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Red;
-            series2.Legend = "Legend1";
-            series2.Name = "Frecuencia esperada";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series3.BorderColor = System.Drawing.Color.Black;
+            series3.ChartArea = "ChartArea1";
+            series3.Color = System.Drawing.Color.SkyBlue;
+            series3.CustomProperties = "LabelStyle=Bottom";
+            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.Name = "Frecuencia observada";
+            series3.YValuesPerPoint = 4;
+            series4.BorderWidth = 4;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = System.Drawing.Color.Red;
+            series4.Legend = "Legend1";
+            series4.Name = "Frecuencia esperada";
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(1181, 327);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
-            title1.Alignment = System.Drawing.ContentAlignment.TopCenter;
-            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title1.Name = "Frecuencia observada";
-            title1.Text = "Frecuencia observada";
-            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title2.Name = "Frecuencia esperada";
-            title2.Text = "Frecuencia esperada";
-            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            title3.Name = "Histograma de frecuencias";
-            title3.Text = "Histograma de frecuencias";
-            this.chart1.Titles.Add(title1);
-            this.chart1.Titles.Add(title2);
-            this.chart1.Titles.Add(title3);
+            title4.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            title4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title4.Name = "Frecuencia observada";
+            title4.Text = "Frecuencia observada";
+            title5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title5.Name = "Frecuencia esperada";
+            title5.Text = "Frecuencia esperada";
+            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            title6.Name = "Histograma de frecuencias";
+            title6.Text = "Histograma de frecuencias";
+            this.chart1.Titles.Add(title4);
+            this.chart1.Titles.Add(title5);
+            this.chart1.Titles.Add(title6);
             // 
             // btnIntervalos
             // 
@@ -564,7 +583,7 @@ namespace TP_SIM
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1582, 382);
+            this.label13.Location = new System.Drawing.Point(454, 193);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 29;
@@ -573,7 +592,7 @@ namespace TP_SIM
             // lblMedia
             // 
             this.lblMedia.AutoSize = true;
-            this.lblMedia.Location = new System.Drawing.Point(1643, 382);
+            this.lblMedia.Location = new System.Drawing.Point(515, 193);
             this.lblMedia.Name = "lblMedia";
             this.lblMedia.Size = new System.Drawing.Size(10, 13);
             this.lblMedia.TabIndex = 30;
@@ -582,7 +601,7 @@ namespace TP_SIM
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1582, 415);
+            this.label14.Location = new System.Drawing.Point(454, 226);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 13);
             this.label14.TabIndex = 31;
@@ -591,21 +610,37 @@ namespace TP_SIM
             // lblVarianza
             // 
             this.lblVarianza.AutoSize = true;
-            this.lblVarianza.Location = new System.Drawing.Point(1643, 415);
+            this.lblVarianza.Location = new System.Drawing.Point(515, 226);
             this.lblVarianza.Name = "lblVarianza";
             this.lblVarianza.Size = new System.Drawing.Size(10, 13);
             this.lblVarianza.TabIndex = 32;
             this.lblVarianza.Text = "-";
+            // 
+            // lblKsCal
+            // 
+            this.lblKsCal.AutoSize = true;
+            this.lblKsCal.Location = new System.Drawing.Point(1623, 415);
+            this.lblKsCal.Name = "lblKsCal";
+            this.lblKsCal.Size = new System.Drawing.Size(10, 13);
+            this.lblKsCal.TabIndex = 29;
+            this.lblKsCal.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(1529, 415);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 13);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "KS calculado";
             // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1819, 838);
-            this.Controls.Add(this.lblVarianza);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.lblMedia);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lblKsCal);
             this.Controls.Add(this.lblChiConclusion);
             this.Controls.Add(this.lblChiTab);
             this.Controls.Add(this.lblChiCalc);
@@ -690,6 +725,8 @@ namespace TP_SIM
         private System.Windows.Forms.Label lblMedia;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblVarianza;
+        private System.Windows.Forms.Label lblKsCal;
+        private System.Windows.Forms.Label label15;
     }
 }
 
