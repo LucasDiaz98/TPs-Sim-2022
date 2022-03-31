@@ -24,7 +24,9 @@ namespace TP_SIM
         List<double> numerosRND = new List<double>();
         List<Intervalo> intervalos = new List<Intervalo>();
         double[] valores_chi = { 3.84, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7 };
-        double[] valores_ks = { 0.97, 0.84, 0.70, 0.62, 0.56, 0.51, 0.48, 0.45, 0.43, 0.40, 0.39, 0.37 };
+        double[] valores_ks = { 0.9750, 0.8418, 0.7076, 0.6239, 0.5632, 0.5192, 0.4834, 0.4542, 0.4300, 0.4092
+                , 0.3912, 0.3754, 0.3614, 0.3489, 0.3375, 0.3273, 0.3179, 0.3093, 0.3014, 0.2940
+                , 0.2872, 0.2808, 0.2749, 0.2693, 0.2640, 0.2590, 0.2543, 0.2499, 0.2457, 0.2417 };
 
 
         public TP1()
@@ -428,7 +430,7 @@ namespace TP_SIM
         {
             //grados de libertad
             int v = cant_intervalos;
-            return valores_ks[v];
+            return valores_ks[v-1];
         }
 
 
@@ -458,6 +460,8 @@ namespace TP_SIM
 
         private void btnPrueba_Click(object sender, EventArgs e)
         {
+            double media;
+            double varianza;
             if (cmbChi.SelectedIndex == 0)
             {
                 double chi_calc = calculoChiCALC(intervalos);
@@ -478,9 +482,24 @@ namespace TP_SIM
             }
             else
             {
-                double ks_cal = calculoKSTAB(intervalos.Count);
-
+                double ks_cal = KSCalculado(intervalos, Convert.ToDouble(numerosRND.Count));
+                double ks_tab = calculoKSTAB(numerosRND.Count);
+                media = calcularMedia(intervalos, numerosRND.Count);
+                varianza = calcularVarianza(intervalos, numerosRND.Count, media);
+                lblMedia.Text = media.ToString();
+                lblVarianza.Text = varianza.ToString();
                 lblKsCal.Text = ks_cal.ToString();
+                lblKsTab.Text = ks_tab.ToString();
+                if (ks_cal <= ks_tab)
+                {
+                    lblKsConclusion.ForeColor = Color.Green;
+                    lblKsConclusion.Text = "No rechazada";
+                }
+                else
+                {
+                    lblKsConclusion.ForeColor = Color.Red;
+                    lblKsConclusion.Text = "Rechazada";
+                }
             }
             
         }
@@ -560,13 +579,27 @@ namespace TP_SIM
                 }
             }
             return mayor;
-
-
         }
 
-        private void valoresNoVacios()
+        private double calcularMedia(List <Intervalo> intervalos, double n)
         {
-            
+            double x = 0;
+            foreach (Intervalo intervalo in intervalos)
+            {
+                x += Math.Round((intervalo.Marca_clase * intervalo.Frecuencia_observada) / n, 4);
+            }
+            return Math.Round(x / n, 4);
         }
+
+        private double calcularVarianza(List<Intervalo> intervalos, double n, double media)
+        {
+            double varianza = 0;
+            foreach (Intervalo intervalo in intervalos)
+            {
+                varianza += Math.Round(Math.Pow(intervalo.Marca_clase, 2) * intervalo.Frecuencia_esperada - n * Math.Pow(media, 2), 4);
+            }
+            return Math.Round(varianza / (n - 1), 4);
+        }
+
     }
 }
