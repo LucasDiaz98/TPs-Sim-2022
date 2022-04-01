@@ -271,6 +271,7 @@ namespace TP_SIM
 
         private void btnPrueba_Click(object sender, EventArgs e)
         {
+            // CHI CUADRADO
             if (cmbChi.SelectedIndex == 0)
             {
                 if(numerosRND.Count < 30)
@@ -314,6 +315,8 @@ namespace TP_SIM
                     }
                 }
             }
+
+            // KS
             else
             {
                 if(numerosRND.Count > 30)
@@ -390,7 +393,7 @@ namespace TP_SIM
         private List<double> generadorLenguajeNumerosAleatorios(double nroSim)
         {
             List<double> numerosRandom = new List<double>();
-            var random = new Random((int)nroSim);
+            var random = new Random();
             double rand;
             for (int i = 0; i < nroSim; i++)
             {
@@ -401,6 +404,7 @@ namespace TP_SIM
         }
 
 
+        //Esta función se encarga de llenar la grilla que muestra los numeros aleatorios
         private void llenarGrillaRND(List<double> randoms)
         {
             for (int i = 0; i < randoms.Count; i++)
@@ -421,28 +425,27 @@ namespace TP_SIM
         }
 
 
-        //Esta funcion es la que se encarga de crear los intervalos. (VER)
+        //Esta funcion es la que se encarga de crear los intervalos sin calcular frecuencias, solamente L.I y L.S
         private List<Intervalo> generarIntervalos(double n)
         {
             List<Intervalo> intervalos = new List<Intervalo>();
             double valor = Math.Round(1 / n, 4);
-            double valor_ant = 0;
+            double valor_ant = 0; //primer valor inferior
             for (int i = 0; i < n; i++)
             {
-                double valor_act = Math.Round(valor * (i + 1), 4);
-                intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act, i + 1));
-                valor_ant = valor_act;
+                double valor_act = Math.Round(valor * (i + 1), 4); //valor superior
+                intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act, i + 1));//pasar ambos valores como parametro para la creacion del objeto intervalo
+                valor_ant = valor_act; // el valor superior de esta iteracion pasa a ser el valor inferior de la siguiente
             }
             if (n == 12)
             {
-                intervalos.Last().Valor_sup = 1;
+                intervalos.Last().Valor_sup = 1; // por redondeo, el ultimo intervalo no llega a uno, se corrige con este condicional.
             }
             return intervalos;
         }
 
 
-        //Esta funcion se encarga de la creacion de un objeto definiendo el valor que van a
-        //tener sus variables y los agrega a una lista de intervalos. (VER)
+        //Esta funcion se encarga de la creacion de un objeto intervalo, valuando por defecto las frecuencias en 0
         private Intervalo generarObjetoIntervalo(double inf, double sup, int iteracion)
         {
             Intervalo intervalo = new Intervalo()
@@ -464,11 +467,14 @@ namespace TP_SIM
         //Esta funcion calcula las frecuencias que posteriormente van a ser usadas en el evento que genera el boton "Calcular intervalos".
         private void calcularFrecuencias(List<double> listrnd, List<Intervalo> intervalos)
         {
-            //double acumulador = 0;
+            
+            // FRECUENCIA ESPERADA
             foreach (Intervalo intervalo in intervalos)
             {
                 intervalo.Frecuencia_esperada = listrnd.Count / intervalos.Count;
             }
+            
+            // FRECUENCIA OBSERVADA Y RELATIVA
             foreach (double rnd in listrnd)
             {
                 foreach (Intervalo intervalo in intervalos)
@@ -476,17 +482,19 @@ namespace TP_SIM
                     if (intervalo.estaEnIntervalo(rnd))
                     {
                         intervalo.Frecuencia_observada += 1;
-                        intervalo.Frecuencia_relativa += Math.Round(1 / Convert.ToDouble(listrnd.Count), 4);
+                        intervalo.Frecuencia_relativa += Math.Round(1 / Convert.ToDouble(listrnd.Count), 4); // Sumamos 1/N siendo N tamaño de muestra
                         break;
                     }
                 }
-            }           
+            }
+            
+            // FRECUENCIA ACUMULADA Y RELATIVA ACUMULADA
             for (int i = 0; i < intervalos.Count; i++)
             {
                 if (i != 0)
                 {
-                    intervalos[i].Frecuencia_relativa_acumulada = Math.Round(intervalos[i - 1].Frecuencia_relativa_acumulada + intervalos[i].Frecuencia_relativa, 4);
-                    intervalos[i].Frecuencia_acumulada = intervalos[i - 1].Frecuencia_acumulada + intervalos[i].Frecuencia_observada;
+                    intervalos[i].Frecuencia_relativa_acumulada = Math.Round(intervalos[i - 1].Frecuencia_relativa_acumulada + intervalos[i].Frecuencia_relativa, 4); 
+                    intervalos[i].Frecuencia_acumulada = intervalos[i - 1].Frecuencia_acumulada + intervalos[i].Frecuencia_observada; 
                 }
                 else
                 {
@@ -501,19 +509,18 @@ namespace TP_SIM
         //una constante g, una constante k, el incremento c y el numero de simulaciones.
         private List<double> generadorNumerosAleatorios(double semilla, double g, double k, double c, double n)
         {
-            double multiplicador = 1 + 4 * k;
-            double modulo = Math.Pow(2, g);
-            double x;
-            double rnd;
-            List<double> numerosRandom = new List<double>();
+            double multiplicador = 1 + 4 * k; // a
+            double modulo = Math.Pow(2, g); // m
+            double x; // X(i + 1)
+            double rnd; // numero rnd
+            List<double> numerosRandom = new List<double>(); // lista de randoms
 
             for (int i = 0; i < n; i++)
             {
-                //Esta ecuacion recursiva es la que se encarga de ir generando los numeros aleatorios.
                 x = (multiplicador * semilla + c) % modulo;
                 rnd = Math.Round((x) / (modulo), 4);
                 numerosRandom.Add(rnd);
-                semilla = x;
+                semilla = x; // valuamos semilla para la proxima iteracion
             }
             return numerosRandom;
         }
@@ -524,7 +531,7 @@ namespace TP_SIM
         {
             //grados de libertad
             int v = cant_intervalos - 1;
-            return valores_chi[v-1];
+            return valores_chi[v-1]; // v - 1 porque el indice de los vectores arranca en 0, y la tabla arranca en 1
         }
 
 
@@ -543,11 +550,11 @@ namespace TP_SIM
 
 
         //Calcula el valor KS mediante tabla.
-        public double calculoKSTAB(int cant_intervalos)
+        public double calculoKSTAB(int cant_muestra)
         {
             //grados de libertad
-            int v = cant_intervalos;
-            return valores_ks[v-1];
+            int v = cant_muestra;
+            return valores_ks[v-1]; // la tabla arranca en 1, los vectores arranca 
         }
 
 
@@ -563,7 +570,7 @@ namespace TP_SIM
                 pfo_ac += Math.Round(intervalo.Frecuencia_observada / n, 4);
                 pfe_ac += Math.Round(intervalo.Frecuencia_esperada / n, 4);
                 c = Math.Abs(pfo_ac - pfe_ac);
-                if(c> mayor)
+                if(c > mayor)
                 {
                     mayor = c;
                 }
