@@ -52,7 +52,7 @@ namespace TP_SIM
             btnLimpiarHistograma.Enabled = false;
             cmbChi.Items.Add("Prueba de chi-cuadrado");
             cmbChi.Items.Add("Prueba de Ks");
-            //cmbChi.SelectedIndex = 0;
+            cmbChi.SelectedIndex = 0;
             chart1.Titles["Histograma de frecuencias"].Visible = false;
             
         }
