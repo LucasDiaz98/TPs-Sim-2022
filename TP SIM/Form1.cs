@@ -20,7 +20,6 @@ namespace TP_SIM
         double g = 0;
         double semilla = 0;
         double numSimulaciones = 0;
-        string mensajeError = "";
         List<double> numerosRND = new List<double>();
         List<Intervalo> intervalos = new List<Intervalo>();
         double[] valores_chi = { 3.84, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7 };
@@ -53,8 +52,6 @@ namespace TP_SIM
             btnLimpiarHistograma.Enabled = false;
             cmbChi.Items.Add("Prueba de chi-cuadrado");
             cmbChi.Items.Add("Prueba de Ks");
-            chart1.Titles["Frecuencia observada"].Visible = false;
-            chart1.Titles["Frecuencia esperada"].Visible = false;
             chart1.Titles["Histograma de frecuencias"].Visible = false;
         }
 
@@ -104,7 +101,7 @@ namespace TP_SIM
         //Esta funcion calcula las frecuencias que posteriormente van a ser usadas en el evento que genera el boton "Calcular intervalos".
         private void calcularFrecuencias(List<double> listrnd, List<Intervalo> intervalos)
         {
-            double acumulador = 0;
+            //double acumulador = 0;
             foreach (Intervalo intervalo in intervalos)
             {
                 intervalo.Frecuencia_esperada = listrnd.Count / intervalos.Count;
@@ -169,9 +166,6 @@ namespace TP_SIM
             numerosRND.Clear();
             dgRND.Rows.Clear();
 
-            //double media = calculoMedia(dgIntervalos, intervalos.Count);
-            //lblMedia.Text
-
             if (cmb_Metodo.SelectedIndex == 2)
             {
                 if (txt_numSimulaciones.Text == "")
@@ -183,7 +177,6 @@ namespace TP_SIM
                     numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
                     numerosRND = generadorLenguajeNumerosAleatorios(numSimulaciones);
                     llenarGrillaRND(numerosRND);
-                    //listaNumeros.DataSource = numerosRND;
                 }
                 
             }
@@ -202,7 +195,6 @@ namespace TP_SIM
                     numSimulaciones = Convert.ToDouble(txt_numSimulaciones.Text);
                     numerosRND = generadorNumerosAleatorios(semilla, g, k, c, numSimulaciones);
                     llenarGrillaRND(numerosRND);
-                    //listaNumeros.DataSource = numerosRND;
                     txtM.Text = Math.Pow(2, g).ToString();
                     if (cmb_Metodo.SelectedIndex == 0)
                     {
@@ -259,17 +251,21 @@ namespace TP_SIM
         //con los datos correspondientes.
         private void btnIntervalos_Click(object sender, EventArgs e)
         {
-            //List<Intervalo> intervalos = generarIntervalos(Convert.ToDouble(txtIntervalos.Text));
-            //List<Intervalo> intervalos = Convert.ToDouble(cmbIntervalos.SelectedItem.ToString());
+            double media;
+            double varianza;
             btnHistograma.Enabled = true;
             int numeroIntervalos = int.Parse(cmbIntervalos.SelectedItem.ToString());
             List<Intervalo> intervalos = generarIntervalos(numeroIntervalos);
             calcularFrecuencias(numerosRND, intervalos);
             llenarGrillaIntervalos(intervalos);
             this.intervalos = intervalos;
-            intervalos = new List<Intervalo>();
+            //intervalos = new List<Intervalo>();
             btnIntervalos.Enabled = false;
             btnPrueba.Enabled = true;
+            media = calcularMedia(intervalos, numerosRND.Count);
+            varianza = calcularVarianza(intervalos, numerosRND.Count, media);
+            lblMedia.Text = media.ToString();
+            lblVarianza.Text = varianza.ToString();
         }
 
 
@@ -317,7 +313,6 @@ namespace TP_SIM
             cmbIntervalos.Enabled = false;
             btnLimpiarHistograma.Enabled = true;
             limpiarHistograma();
-            //chart1.AlignDataPointsByAxisLabel();
             for (int i = 0; i < intervalos.Count; i++)
             {
                 chart1.Series["Frecuencia observada"].Points.AddXY(intervalos[i].intervaloString(), intervalos[i].Frecuencia_observada);
@@ -327,8 +322,6 @@ namespace TP_SIM
             btnHistograma.Enabled = false;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             chart1.ChartAreas[0].AxisX.Maximum = intervalos.Count + 1;
-            chart1.Titles["Frecuencia observada"].Visible = true;
-            chart1.Titles["Frecuencia esperada"].Visible = true;
             chart1.Titles["Histograma de frecuencias"].Visible = true;
         }
 
@@ -394,8 +387,6 @@ namespace TP_SIM
             cmb_Metodo.SelectedIndex = -1;
             dgRND.Rows.Clear();
             numerosRND.Clear();
-            //listaNumeros.DataSource = null;
-            //listaNumeros.Items.Clear();
         }
 
 
@@ -440,35 +431,8 @@ namespace TP_SIM
             return valores_ks[v-1];
         }
 
-
-        //public double calculoKSCAL(List<Intervalo> intervalos)
-        //{
-        //    double acum = 0;
-        //    foreach (Intervalo interv in intervalos)
-        //    {
-        //        var prob = (interv.Frecuencia_observada / int.Parse(txt_numSimulaciones.Text));
-        //        acum += prob;
-        //    }
-        //    return acum;
-        //}
-
-
-
-        //private double calculoMedia(List<Intervalo> intervalos, int n)
-        //{
-        //    double media = 0;
-        //    double suma = 0;
-        //    foreach (Intervalo interv in intervalos)
-        //    {
-        //        suma = suma + (interv.Frecuencia_observada * interv.Marca_clase);
-        //    }
-        //    return suma;
-        //}
-
         private void btnPrueba_Click(object sender, EventArgs e)
         {
-            double media;
-            double varianza;
             if (cmbChi.SelectedIndex == 0)
             {
                 double chi_calc = calculoChiCALC(intervalos);
@@ -491,10 +455,7 @@ namespace TP_SIM
             {
                 double ks_cal = KSCalculado(intervalos, Convert.ToDouble(numerosRND.Count));
                 double ks_tab = calculoKSTAB(numerosRND.Count);
-                media = calcularMedia(intervalos, numerosRND.Count);
-                varianza = calcularVarianza(intervalos, numerosRND.Count, media);
-                lblMedia.Text = media.ToString();
-                lblVarianza.Text = varianza.ToString();
+                
                 lblKsCal.Text = ks_cal.ToString();
                 lblKsTab.Text = ks_tab.ToString();
                 if (ks_cal <= ks_tab)
@@ -526,8 +487,6 @@ namespace TP_SIM
             }
             btnHistograma.Enabled = true;
             cmbIntervalos.Enabled = true;
-            chart1.Titles["Frecuencia observada"].Visible = false;
-            chart1.Titles["Frecuencia esperada"].Visible = false;
             chart1.Titles["Histograma de frecuencias"].Visible = false;
         }
 
