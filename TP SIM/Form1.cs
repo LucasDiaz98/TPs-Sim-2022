@@ -52,8 +52,9 @@ namespace TP_SIM
             btnLimpiarHistograma.Enabled = false;
             cmbChi.Items.Add("Prueba de chi-cuadrado");
             cmbChi.Items.Add("Prueba de Ks");
-            cmbChi.SelectedIndex = 0;
+            //cmbChi.SelectedIndex = 0;
             chart1.Titles["Histograma de frecuencias"].Visible = false;
+            
         }
 
         //Estas funciones validan que solo se pueda colocar numeros enteros dentro de los textbox.
@@ -96,6 +97,7 @@ namespace TP_SIM
                 e.Handled = true;
             }
         }
+
 
         //Esta funcion nos permite validar que segun el metodo que se elija, estara habilitada o no la opcion de agregar un valor a "c" y los demas textbox.
         private void cmb_Metodo_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,10 +143,10 @@ namespace TP_SIM
                     txtG.Text = "";
                 }
             }
-
         }
 
-        //Esta funcion se encarga de tomar todos los datos ingresados por el usuario y muestra la lista generada de numeros aleatorios.
+
+        //Esta funcion se encarga de tomar todos los datos ingresados por el usuario y muestra la grilla generada de numeros aleatorios.
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             cmbIntervalos.Enabled = true;
@@ -194,6 +196,7 @@ namespace TP_SIM
             }
         }
 
+
         //Esta funcion toma la seleccion que se hace del numero de intervalos que se quiere y genera la grilla
         //con los datos correspondientes.
         private void btnIntervalos_Click(object sender, EventArgs e)
@@ -217,9 +220,6 @@ namespace TP_SIM
         }
 
 
-
-
-
         //Esta funcion se encarga de generar el histograma.
         private void btnHistograma_Click(object sender, EventArgs e)
         {
@@ -237,6 +237,7 @@ namespace TP_SIM
             chart1.ChartAreas[0].AxisX.Maximum = intervalos.Count + 1;
             chart1.Titles["Histograma de frecuencias"].Visible = true;
         }
+
 
         //Esta funcion se encarga de limpiar los campos.
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -266,6 +267,7 @@ namespace TP_SIM
                 intervalos.Clear();
             }
         }
+
 
         private void btnPrueba_Click(object sender, EventArgs e)
         {
@@ -311,8 +313,6 @@ namespace TP_SIM
                         lblConclusion.Text = "Rechazada";
                     }
                 }
-
-
             }
             else
             {
@@ -343,7 +343,6 @@ namespace TP_SIM
                                 lblConclusion.Text = "Rechazada";
                             }
                         }
-
                     }
                     else
                     {
@@ -363,18 +362,18 @@ namespace TP_SIM
                             lblConclusion.Text = "Rechazada";
                         }
                     }
-                }
-
-
-                
+                }               
             }
         }
 
-        //Esta funcion se encarga de limpiar el chart donde esta el grafico del histograma.
+        
         private void btnLimpiarHistograma_Click(object sender, EventArgs e)
         {
             limpiarHistograma();
         }
+
+
+        //Esta funcion se encarga de limpiar el chart donde esta el grafico del histograma.
         private void limpiarHistograma()
         {
             foreach (var series in chart1.Series)
@@ -385,6 +384,7 @@ namespace TP_SIM
             cmbIntervalos.Enabled = true;
             chart1.Titles["Histograma de frecuencias"].Visible = false;
         }
+
 
         //Esta funcion se encarga de generar los numeros aleatorios con el generador del lenguaje.
         private List<double> generadorLenguajeNumerosAleatorios(double nroSim)
@@ -399,6 +399,8 @@ namespace TP_SIM
             }
             return numerosRandom;
         }
+
+
         private void llenarGrillaRND(List<double> randoms)
         {
             for (int i = 0; i < randoms.Count; i++)
@@ -406,6 +408,7 @@ namespace TP_SIM
                 dgRND.Rows.Add(i + 1, randoms[i]);
             }
         }
+
 
         //Esta funcion se encarga de ir llenando la grilla con los valores que le son asignados. (VER ESTE COMENTARIO)
         private void llenarGrillaIntervalos(List<Intervalo> intervalos)
@@ -416,6 +419,7 @@ namespace TP_SIM
                     intervalo.Frecuencia_relativa, intervalo.Frecuencia_acumulada, intervalo.Frecuencia_relativa_acumulada, intervalo.Frecuencia_esperada);
             }
         }
+
 
         //Esta funcion es la que se encarga de crear los intervalos. (VER)
         private List<Intervalo> generarIntervalos(double n)
@@ -428,13 +432,11 @@ namespace TP_SIM
                 double valor_act = Math.Round(valor * (i + 1), 4);
                 intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act, i + 1));
                 valor_ant = valor_act;
-            };
-
+            }
             if (n == 12)
             {
                 intervalos.Last().Valor_sup = 1;
             }
-
             return intervalos;
         }
 
@@ -458,6 +460,7 @@ namespace TP_SIM
             return intervalo;
         }
 
+
         //Esta funcion calcula las frecuencias que posteriormente van a ser usadas en el evento que genera el boton "Calcular intervalos".
         private void calcularFrecuencias(List<double> listrnd, List<Intervalo> intervalos)
         {
@@ -470,7 +473,6 @@ namespace TP_SIM
             {
                 foreach (Intervalo intervalo in intervalos)
                 {
-
                     if (intervalo.estaEnIntervalo(rnd))
                     {
                         intervalo.Frecuencia_observada += 1;
@@ -478,8 +480,7 @@ namespace TP_SIM
                         break;
                     }
                 }
-            }
-            
+            }           
             for (int i = 0; i < intervalos.Count; i++)
             {
                 if (i != 0)
@@ -494,6 +495,7 @@ namespace TP_SIM
                 }
             }
         }
+
 
         //Esta funcion es la que se encarga de generar los numeros aleatorios, recibe como parametros la semilla,
         //una constante g, una constante k, el incremento c y el numero de simulaciones.
@@ -516,7 +518,8 @@ namespace TP_SIM
             return numerosRandom;
         }
 
-        //Calcula el valor de chi mediante tabla
+
+        //Calcula el valor de chi mediante tabla.
         private double calculoChiTAB(int cant_intervalos)
         {
             //grados de libertad
@@ -524,7 +527,8 @@ namespace TP_SIM
             return valores_chi[v-1];
         }
 
-        //Calcula el valor de chi mediante formula
+
+        //Calcula el valor de chi mediante formula.
         private double calculoChiCALC(List<Intervalo> intervalos)
         {
             double acumulador = 0;
@@ -537,7 +541,8 @@ namespace TP_SIM
             return acumulador;
         }
 
-        //Calcula el valor KS mediante tabla
+
+        //Calcula el valor KS mediante tabla.
         public double calculoKSTAB(int cant_intervalos)
         {
             //grados de libertad
@@ -545,7 +550,8 @@ namespace TP_SIM
             return valores_ks[v-1];
         }
 
-        //Calcula el valor KS mediante formula
+
+        //Calcula el valor KS mediante formula.
         private double KSCalculado(List<Intervalo> intervalos, double n)
         {
             double mayor = 0;
@@ -565,6 +571,8 @@ namespace TP_SIM
             return mayor;
         }
 
+
+        //Esta funcion calcula la media.
         private double calcularMedia(List <Intervalo> intervalos, double n)
         {
             double x = 0;
@@ -575,6 +583,8 @@ namespace TP_SIM
             return Math.Round(x / n, 4);
         }
 
+
+        //Esta funcion calcula la varianza.
         private double calcularVarianza(List<Intervalo> intervalos, double n, double media)
         {
             double varianza = 0;
@@ -586,7 +596,8 @@ namespace TP_SIM
             return Math.Round((varianza - n * Math.Pow(media, 2)) / (n - 1), 4);
         }
 
-        //Creación de la clase intervalo y sus metodos
+
+        //Creación de la clase intervalo y sus metodos.
         public class Intervalo
         {
             private int numIteracion;
@@ -623,6 +634,7 @@ namespace TP_SIM
             }
 
         }
+
 
         private void cmbChi_SelectedIndexChanged(object sender, EventArgs e)
         {
