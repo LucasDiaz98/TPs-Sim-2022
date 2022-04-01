@@ -29,11 +29,11 @@ namespace TP_SIM
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Metodo = new System.Windows.Forms.GroupBox();
             this.dgRND = new System.Windows.Forms.DataGridView();
             this.txtMaxPeriodo = new System.Windows.Forms.TextBox();
@@ -84,16 +84,26 @@ namespace TP_SIM
             this.Frecuencia_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_relativa_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frecuencia_esperada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.Metodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRND)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Metodo
             // 
-            this.Metodo.Controls.Add(this.dgRND);
             this.Metodo.Controls.Add(this.txtMaxPeriodo);
+            this.Metodo.Controls.Add(this.label10);
             this.Metodo.Controls.Add(this.label8);
             this.Metodo.Controls.Add(this.btnLimpiar);
             this.Metodo.Controls.Add(this.txtM);
@@ -113,19 +123,20 @@ namespace TP_SIM
             this.Metodo.Controls.Add(this.cmb_Metodo);
             this.Metodo.Location = new System.Drawing.Point(12, 41);
             this.Metodo.Name = "Metodo";
-            this.Metodo.Size = new System.Drawing.Size(620, 248);
+            this.Metodo.Size = new System.Drawing.Size(403, 273);
             this.Metodo.TabIndex = 0;
             this.Metodo.TabStop = false;
             // 
             // dgRND
             // 
+            this.dgRND.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgRND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRND.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIteracion,
             this.colRND});
-            this.dgRND.Location = new System.Drawing.Point(415, 19);
+            this.dgRND.Location = new System.Drawing.Point(6, 23);
             this.dgRND.Name = "dgRND";
-            this.dgRND.Size = new System.Drawing.Size(182, 150);
+            this.dgRND.Size = new System.Drawing.Size(188, 220);
             this.dgRND.TabIndex = 29;
             // 
             // txtMaxPeriodo
@@ -147,7 +158,7 @@ namespace TP_SIM
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(276, 181);
+            this.btnLimpiar.Location = new System.Drawing.Point(224, 177);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(78, 37);
             this.btnLimpiar.TabIndex = 10;
@@ -174,7 +185,7 @@ namespace TP_SIM
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(166, 181);
+            this.btnGenerar.Location = new System.Drawing.Point(92, 177);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(96, 37);
             this.btnGenerar.TabIndex = 9;
@@ -288,7 +299,7 @@ namespace TP_SIM
             // 
             // btnHistograma
             // 
-            this.btnHistograma.Location = new System.Drawing.Point(447, 320);
+            this.btnHistograma.Location = new System.Drawing.Point(314, 656);
             this.btnHistograma.Name = "btnHistograma";
             this.btnHistograma.Size = new System.Drawing.Size(133, 36);
             this.btnHistograma.TabIndex = 13;
@@ -299,58 +310,60 @@ namespace TP_SIM
             // chart1
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            chartArea2.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.IsStartedFromZero = false;
-            chartArea2.AxisX.LabelAutoFitMinFontSize = 5;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.Maximum = 13D;
-            chartArea2.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea2.AxisX.Title = "Intervalos";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea2.AxisY.Title = "Frecuencias";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea2.CursorX.IsUserEnabled = true;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 86.8034F;
-            chartArea2.Position.Width = 74.29581F;
-            chartArea2.Position.X = 7.704184F;
-            chartArea2.Position.Y = 13.1966F;
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(12, 386);
+            this.chart1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            chartArea3.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea3.AxisX.Interval = 1D;
+            chartArea3.AxisX.IsLabelAutoFit = false;
+            chartArea3.AxisX.IsStartedFromZero = false;
+            chartArea3.AxisX.LabelAutoFitMinFontSize = 5;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.Maximum = 13D;
+            chartArea3.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea3.AxisX.Title = "Intervalos";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea3.AxisY.Title = "Frecuencias";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea3.CursorX.IsUserEnabled = true;
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 86.8034F;
+            chartArea3.Position.Width = 74.29581F;
+            chartArea3.Position.X = 7.704184F;
+            chartArea3.Position.Y = 13.1966F;
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(12, 334);
             this.chart1.Name = "chart1";
-            series3.BorderColor = System.Drawing.Color.Black;
-            series3.ChartArea = "ChartArea1";
-            series3.Color = System.Drawing.Color.SkyBlue;
-            series3.CustomProperties = "LabelStyle=Bottom";
-            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Frecuencia observada";
-            series3.YValuesPerPoint = 4;
-            series4.BorderWidth = 4;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.Red;
-            series4.Legend = "Legend1";
-            series4.Name = "Frecuencia esperada";
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(1052, 316);
+            series5.BorderColor = System.Drawing.Color.Black;
+            series5.ChartArea = "ChartArea1";
+            series5.Color = System.Drawing.Color.SkyBlue;
+            series5.CustomProperties = "LabelStyle=Bottom";
+            series5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            series5.IsValueShownAsLabel = true;
+            series5.Legend = "Legend1";
+            series5.Name = "Frecuencia observada";
+            series5.YValuesPerPoint = 4;
+            series6.BorderWidth = 4;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.Red;
+            series6.Legend = "Legend1";
+            series6.Name = "Frecuencia esperada";
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
+            this.chart1.Size = new System.Drawing.Size(1031, 316);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            title2.Name = "Histograma de frecuencias";
-            title2.Text = "Histograma de frecuencias";
-            this.chart1.Titles.Add(title2);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            title3.Name = "Histograma de frecuencias";
+            title3.Text = "Histograma de frecuencias";
+            this.chart1.Titles.Add(title3);
             // 
             // btnIntervalos
             // 
-            this.btnIntervalos.Location = new System.Drawing.Point(990, 40);
+            this.btnIntervalos.Location = new System.Drawing.Point(146, 23);
             this.btnIntervalos.Name = "btnIntervalos";
             this.btnIntervalos.Size = new System.Drawing.Size(110, 20);
             this.btnIntervalos.TabIndex = 12;
@@ -362,6 +375,7 @@ namespace TP_SIM
             // 
             this.dgIntervalos.AllowUserToAddRows = false;
             this.dgIntervalos.AllowUserToDeleteRows = false;
+            this.dgIntervalos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgIntervalos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgIntervalos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nro_Iteraciones,
@@ -373,7 +387,7 @@ namespace TP_SIM
             this.Frecuencia_acumulada,
             this.Frecuencia_relativa_acumulada,
             this.Frecuencia_esperada});
-            this.dgIntervalos.Location = new System.Drawing.Point(648, 85);
+            this.dgIntervalos.Location = new System.Drawing.Point(6, 63);
             this.dgIntervalos.Name = "dgIntervalos";
             this.dgIntervalos.ReadOnly = true;
             this.dgIntervalos.RowTemplate.Height = 25;
@@ -384,7 +398,7 @@ namespace TP_SIM
             // 
             this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIntervalos.FormattingEnabled = true;
-            this.cmbIntervalos.Location = new System.Drawing.Point(845, 41);
+            this.cmbIntervalos.Location = new System.Drawing.Point(10, 23);
             this.cmbIntervalos.Name = "cmbIntervalos";
             this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
             this.cmbIntervalos.TabIndex = 11;
@@ -392,7 +406,7 @@ namespace TP_SIM
             // 
             // btnLimpiarHistograma
             // 
-            this.btnLimpiarHistograma.Location = new System.Drawing.Point(586, 320);
+            this.btnLimpiarHistograma.Location = new System.Drawing.Point(485, 656);
             this.btnLimpiarHistograma.Name = "btnLimpiarHistograma";
             this.btnLimpiarHistograma.Size = new System.Drawing.Size(133, 36);
             this.btnLimpiarHistograma.TabIndex = 14;
@@ -405,7 +419,7 @@ namespace TP_SIM
             this.cmbChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChi.Enabled = false;
             this.cmbChi.FormattingEnabled = true;
-            this.cmbChi.Location = new System.Drawing.Point(1171, 441);
+            this.cmbChi.Location = new System.Drawing.Point(119, 42);
             this.cmbChi.Name = "cmbChi";
             this.cmbChi.Size = new System.Drawing.Size(135, 21);
             this.cmbChi.TabIndex = 15;
@@ -414,7 +428,7 @@ namespace TP_SIM
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1070, 444);
+            this.label9.Location = new System.Drawing.Point(18, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 16;
@@ -423,7 +437,7 @@ namespace TP_SIM
             // lblTabulado
             // 
             this.lblTabulado.AutoSize = true;
-            this.lblTabulado.Location = new System.Drawing.Point(1099, 514);
+            this.lblTabulado.Location = new System.Drawing.Point(47, 115);
             this.lblTabulado.Name = "lblTabulado";
             this.lblTabulado.Size = new System.Drawing.Size(66, 13);
             this.lblTabulado.TabIndex = 18;
@@ -432,7 +446,7 @@ namespace TP_SIM
             // lblCalculado
             // 
             this.lblCalculado.AutoSize = true;
-            this.lblCalculado.Location = new System.Drawing.Point(1094, 477);
+            this.lblCalculado.Location = new System.Drawing.Point(42, 78);
             this.lblCalculado.Name = "lblCalculado";
             this.lblCalculado.Size = new System.Drawing.Size(71, 13);
             this.lblCalculado.TabIndex = 19;
@@ -441,7 +455,7 @@ namespace TP_SIM
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(1110, 550);
+            this.lblResultado.Location = new System.Drawing.Point(58, 151);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(55, 13);
             this.lblResultado.TabIndex = 20;
@@ -450,7 +464,7 @@ namespace TP_SIM
             // btnPrueba
             // 
             this.btnPrueba.Enabled = false;
-            this.btnPrueba.Location = new System.Drawing.Point(1177, 591);
+            this.btnPrueba.Location = new System.Drawing.Point(98, 185);
             this.btnPrueba.Name = "btnPrueba";
             this.btnPrueba.Size = new System.Drawing.Size(75, 23);
             this.btnPrueba.TabIndex = 24;
@@ -461,7 +475,7 @@ namespace TP_SIM
             // lblValorCalculado
             // 
             this.lblValorCalculado.AutoSize = true;
-            this.lblValorCalculado.Location = new System.Drawing.Point(1215, 477);
+            this.lblValorCalculado.Location = new System.Drawing.Point(163, 78);
             this.lblValorCalculado.Name = "lblValorCalculado";
             this.lblValorCalculado.Size = new System.Drawing.Size(10, 13);
             this.lblValorCalculado.TabIndex = 26;
@@ -470,7 +484,7 @@ namespace TP_SIM
             // lblValorTabulado
             // 
             this.lblValorTabulado.AutoSize = true;
-            this.lblValorTabulado.Location = new System.Drawing.Point(1215, 514);
+            this.lblValorTabulado.Location = new System.Drawing.Point(163, 115);
             this.lblValorTabulado.Name = "lblValorTabulado";
             this.lblValorTabulado.Size = new System.Drawing.Size(10, 13);
             this.lblValorTabulado.TabIndex = 27;
@@ -479,7 +493,7 @@ namespace TP_SIM
             // lblConclusion
             // 
             this.lblConclusion.AutoSize = true;
-            this.lblConclusion.Location = new System.Drawing.Point(1215, 550);
+            this.lblConclusion.Location = new System.Drawing.Point(163, 151);
             this.lblConclusion.Name = "lblConclusion";
             this.lblConclusion.Size = new System.Drawing.Size(10, 13);
             this.lblConclusion.TabIndex = 28;
@@ -488,7 +502,7 @@ namespace TP_SIM
             // lblVarianza
             // 
             this.lblVarianza.AutoSize = true;
-            this.lblVarianza.Location = new System.Drawing.Point(1200, 54);
+            this.lblVarianza.Location = new System.Drawing.Point(469, 26);
             this.lblVarianza.Name = "lblVarianza";
             this.lblVarianza.Size = new System.Drawing.Size(10, 13);
             this.lblVarianza.TabIndex = 36;
@@ -497,7 +511,7 @@ namespace TP_SIM
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1139, 54);
+            this.label14.Location = new System.Drawing.Point(399, 26);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 13);
             this.label14.TabIndex = 35;
@@ -506,7 +520,7 @@ namespace TP_SIM
             // lblMedia
             // 
             this.lblMedia.AutoSize = true;
-            this.lblMedia.Location = new System.Drawing.Point(1200, 21);
+            this.lblMedia.Location = new System.Drawing.Point(342, 26);
             this.lblMedia.Name = "lblMedia";
             this.lblMedia.Size = new System.Drawing.Size(10, 13);
             this.lblMedia.TabIndex = 34;
@@ -515,7 +529,7 @@ namespace TP_SIM
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1139, 21);
+            this.label13.Location = new System.Drawing.Point(280, 26);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 33;
@@ -597,31 +611,103 @@ namespace TP_SIM
             this.Frecuencia_esperada.ReadOnly = true;
             this.Frecuencia_esperada.Width = 80;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, -5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(145, 20);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "Ingreso de datos";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.dgRND);
+            this.groupBox1.Location = new System.Drawing.Point(424, 41);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 273);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, -5);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(170, 20);
+            this.label11.TabIndex = 38;
+            this.label11.Text = "Numeros generados";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.cmbIntervalos);
+            this.groupBox2.Controls.Add(this.btnIntervalos);
+            this.groupBox2.Controls.Add(this.lblVarianza);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.lblMedia);
+            this.groupBox2.Controls.Add(this.dgIntervalos);
+            this.groupBox2.Location = new System.Drawing.Point(630, 41);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(708, 273);
+            this.groupBox2.TabIndex = 38;
+            this.groupBox2.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, -5);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(88, 20);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Intervalos";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.cmbChi);
+            this.groupBox3.Controls.Add(this.lblTabulado);
+            this.groupBox3.Controls.Add(this.lblConclusion);
+            this.groupBox3.Controls.Add(this.lblCalculado);
+            this.groupBox3.Controls.Add(this.lblValorTabulado);
+            this.groupBox3.Controls.Add(this.lblResultado);
+            this.groupBox3.Controls.Add(this.lblValorCalculado);
+            this.groupBox3.Controls.Add(this.btnPrueba);
+            this.groupBox3.Location = new System.Drawing.Point(1055, 334);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(271, 251);
+            this.groupBox3.TabIndex = 39;
+            this.groupBox3.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(6, -1);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(165, 20);
+            this.label15.TabIndex = 40;
+            this.label15.Text = "Pruebas de bondad";
+            // 
             // TP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1350, 729);
-            this.Controls.Add(this.lblVarianza);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.lblMedia);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.lblConclusion);
-            this.Controls.Add(this.lblValorTabulado);
-            this.Controls.Add(this.lblValorCalculado);
-            this.Controls.Add(this.btnPrueba);
-            this.Controls.Add(this.lblResultado);
-            this.Controls.Add(this.lblCalculado);
-            this.Controls.Add(this.lblTabulado);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.cmbChi);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLimpiarHistograma);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnHistograma);
-            this.Controls.Add(this.cmbIntervalos);
-            this.Controls.Add(this.dgIntervalos);
             this.Controls.Add(this.Metodo);
-            this.Controls.Add(this.btnIntervalos);
             this.Name = "TP1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP 1 - Grupo 1";
@@ -631,8 +717,13 @@ namespace TP_SIM
             ((System.ComponentModel.ISupportInitialize)(this.dgRND)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervalos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -688,6 +779,13 @@ namespace TP_SIM
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_acumulada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_relativa_acumulada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_esperada;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label15;
     }
 }
 
