@@ -310,7 +310,7 @@ namespace TP_SIM
         {
             cmbIntervalos.Enabled = false;
             btnLimpiarHistograma.Enabled = true;
-            chart1.AlignDataPointsByAxisLabel();
+            //chart1.AlignDataPointsByAxisLabel();
             for (int i = 0; i < intervalos.Count; i++)
             {
                 chart1.Series["Frecuencia observada"].Points.AddXY(intervalos[i].intervaloString(), intervalos[i].Frecuencia_observada);
@@ -319,7 +319,7 @@ namespace TP_SIM
             chart1.Series[0]["PointWidth"] = "1";
             btnHistograma.Enabled = false;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
-            chart1.ChartAreas[0].AxisX.Maximum = 10;
+            chart1.ChartAreas[0].AxisX.Maximum = 13;
             chart1.Titles["Frecuencia observada"].Visible = true;
             chart1.Titles["Frecuencia esperada"].Visible = true;
             chart1.Titles["Histograma de frecuencias"].Visible = true;
@@ -586,7 +586,7 @@ namespace TP_SIM
             double x = 0;
             foreach (Intervalo intervalo in intervalos)
             {
-                x += Math.Round((intervalo.Marca_clase * intervalo.Frecuencia_observada) / n, 4);
+                x += Math.Round(intervalo.Marca_clase * intervalo.Frecuencia_observada, 4);
             }
             return Math.Round(x / n, 4);
         }
@@ -596,9 +596,10 @@ namespace TP_SIM
             double varianza = 0;
             foreach (Intervalo intervalo in intervalos)
             {
-                varianza += Math.Round(Math.Pow(intervalo.Marca_clase, 2) * intervalo.Frecuencia_esperada - n * Math.Pow(media, 2), 4);
+                varianza += Math.Round(Math.Pow(intervalo.Marca_clase, 2) * intervalo.Frecuencia_observada, 4);
             }
-            return Math.Round(varianza / (n - 1), 4);
+            
+            return Math.Round((varianza - n * Math.Pow(media, 2)) / (n - 1), 4);
         }
 
     }
