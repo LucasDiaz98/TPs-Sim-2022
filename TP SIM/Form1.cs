@@ -293,6 +293,24 @@ namespace TP_SIM
                         }
                     }
                 }
+                else
+                {
+                    double chi_calc = calculoChiCALC(intervalos);
+                    double chi_tab = calculoChiTAB(intervalos.Count);
+
+                    lblValorCalculado.Text = chi_calc.ToString();
+                    lblValorTabulado.Text = chi_tab.ToString();
+                    if (chi_calc <= chi_tab)
+                    {
+                        lblConclusion.ForeColor = Color.Green;
+                        lblConclusion.Text = "No rechazada";
+                    }
+                    else
+                    {
+                        lblConclusion.ForeColor = Color.Red;
+                        lblConclusion.Text = "Rechazada";
+                    }
+                }
 
 
             }
