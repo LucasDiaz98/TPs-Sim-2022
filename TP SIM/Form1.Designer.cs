@@ -29,11 +29,11 @@ namespace TP_SIM
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Metodo = new System.Windows.Forms.GroupBox();
             this.dgRND = new System.Windows.Forms.DataGridView();
             this.colIteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,20 +73,13 @@ namespace TP_SIM
             this.btnLimpiarHistograma = new System.Windows.Forms.Button();
             this.cmbChi = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTabulado = new System.Windows.Forms.Label();
+            this.lblCalculado = new System.Windows.Forms.Label();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.btnPrueba = new System.Windows.Forms.Button();
-            this.labelInfo = new System.Windows.Forms.Label();
-            this.lblChiCalc = new System.Windows.Forms.Label();
-            this.lblChiTab = new System.Windows.Forms.Label();
-            this.lblChiConclusion = new System.Windows.Forms.Label();
-            this.lblKsCal = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lblKsTab = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblKsConclusion = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblValorCalculado = new System.Windows.Forms.Label();
+            this.lblValorTabulado = new System.Windows.Forms.Label();
+            this.lblConclusion = new System.Windows.Forms.Label();
             this.lblVarianza = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.lblMedia = new System.Windows.Forms.Label();
@@ -318,54 +311,54 @@ namespace TP_SIM
             // chart1
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            chartArea1.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.IsStartedFromZero = false;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 5;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.Maximum = 13D;
-            chartArea1.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisX.Title = "Intervalos";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea1.AxisY.Title = "Frecuencias";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea1.CursorX.IsUserEnabled = true;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 86.8034F;
-            chartArea1.Position.Width = 74.29581F;
-            chartArea1.Position.X = 7.704184F;
-            chartArea1.Position.Y = 13.1966F;
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea6.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea6.AxisX.Interval = 1D;
+            chartArea6.AxisX.IsLabelAutoFit = false;
+            chartArea6.AxisX.IsStartedFromZero = false;
+            chartArea6.AxisX.LabelAutoFitMinFontSize = 5;
+            chartArea6.AxisX.MajorGrid.Enabled = false;
+            chartArea6.AxisX.Maximum = 13D;
+            chartArea6.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea6.AxisX.Title = "Intervalos";
+            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea6.AxisY.Title = "Frecuencias";
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea6.CursorX.IsUserEnabled = true;
+            chartArea6.Name = "ChartArea1";
+            chartArea6.Position.Auto = false;
+            chartArea6.Position.Height = 86.8034F;
+            chartArea6.Position.Width = 74.29581F;
+            chartArea6.Position.X = 7.704184F;
+            chartArea6.Position.Y = 13.1966F;
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(74, 379);
             this.chart1.Name = "chart1";
-            series1.BorderColor = System.Drawing.Color.Black;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.SkyBlue;
-            series1.CustomProperties = "LabelStyle=Bottom";
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Frecuencia observada";
-            series1.YValuesPerPoint = 4;
-            series2.BorderWidth = 4;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Red;
-            series2.Legend = "Legend1";
-            series2.Name = "Frecuencia esperada";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series11.BorderColor = System.Drawing.Color.Black;
+            series11.ChartArea = "ChartArea1";
+            series11.Color = System.Drawing.Color.SkyBlue;
+            series11.CustomProperties = "LabelStyle=Bottom";
+            series11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            series11.IsValueShownAsLabel = true;
+            series11.Legend = "Legend1";
+            series11.Name = "Frecuencia observada";
+            series11.YValuesPerPoint = 4;
+            series12.BorderWidth = 4;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Color = System.Drawing.Color.Red;
+            series12.Legend = "Legend1";
+            series12.Name = "Frecuencia esperada";
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
             this.chart1.Size = new System.Drawing.Size(1178, 316);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            title1.Name = "Histograma de frecuencias";
-            title1.Text = "Histograma de frecuencias";
-            this.chart1.Titles.Add(title1);
+            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            title6.Name = "Histograma de frecuencias";
+            title6.Text = "Histograma de frecuencias";
+            this.chart1.Titles.Add(title6);
             // 
             // btnIntervalos
             // 
@@ -485,11 +478,13 @@ namespace TP_SIM
             // cmbChi
             // 
             this.cmbChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChi.Enabled = false;
             this.cmbChi.FormattingEnabled = true;
             this.cmbChi.Location = new System.Drawing.Point(1390, 379);
             this.cmbChi.Name = "cmbChi";
             this.cmbChi.Size = new System.Drawing.Size(121, 21);
             this.cmbChi.TabIndex = 15;
+            this.cmbChi.SelectedIndexChanged += new System.EventHandler(this.cmbChi_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -500,32 +495,32 @@ namespace TP_SIM
             this.label9.TabIndex = 16;
             this.label9.Text = "Prueba de bondad";
             // 
-            // label11
+            // lblTabulado
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1318, 452);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 13);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Chi tabulado";
+            this.lblTabulado.AutoSize = true;
+            this.lblTabulado.Location = new System.Drawing.Point(1318, 452);
+            this.lblTabulado.Name = "lblTabulado";
+            this.lblTabulado.Size = new System.Drawing.Size(66, 13);
+            this.lblTabulado.TabIndex = 18;
+            this.lblTabulado.Text = "Chi tabulado";
             // 
-            // label12
+            // lblCalculado
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1313, 415);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 13);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "Chi calculado";
+            this.lblCalculado.AutoSize = true;
+            this.lblCalculado.Location = new System.Drawing.Point(1313, 415);
+            this.lblCalculado.Name = "lblCalculado";
+            this.lblCalculado.Size = new System.Drawing.Size(71, 13);
+            this.lblCalculado.TabIndex = 19;
+            this.lblCalculado.Text = "Chi calculado";
             // 
-            // label10
+            // lblResultado
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1329, 488);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 13);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Resultado";
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(1329, 488);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(55, 13);
+            this.lblResultado.TabIndex = 20;
+            this.lblResultado.Text = "Resultado";
             // 
             // btnPrueba
             // 
@@ -538,101 +533,37 @@ namespace TP_SIM
             this.btnPrueba.UseVisualStyleBackColor = true;
             this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
             // 
-            // labelInfo
+            // lblValorCalculado
             // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(1197, 44);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(419, 13);
-            this.labelInfo.TabIndex = 25;
-            this.labelInfo.Text = "(En caso de ya haber un histograma, debe limpiarlo antes de generar nuevos interv" +
-    "alos)";
+            this.lblValorCalculado.AutoSize = true;
+            this.lblValorCalculado.Location = new System.Drawing.Point(1434, 415);
+            this.lblValorCalculado.Name = "lblValorCalculado";
+            this.lblValorCalculado.Size = new System.Drawing.Size(10, 13);
+            this.lblValorCalculado.TabIndex = 26;
+            this.lblValorCalculado.Text = "-";
             // 
-            // lblChiCalc
+            // lblValorTabulado
             // 
-            this.lblChiCalc.AutoSize = true;
-            this.lblChiCalc.Location = new System.Drawing.Point(1434, 415);
-            this.lblChiCalc.Name = "lblChiCalc";
-            this.lblChiCalc.Size = new System.Drawing.Size(10, 13);
-            this.lblChiCalc.TabIndex = 26;
-            this.lblChiCalc.Text = "-";
+            this.lblValorTabulado.AutoSize = true;
+            this.lblValorTabulado.Location = new System.Drawing.Point(1434, 452);
+            this.lblValorTabulado.Name = "lblValorTabulado";
+            this.lblValorTabulado.Size = new System.Drawing.Size(10, 13);
+            this.lblValorTabulado.TabIndex = 27;
+            this.lblValorTabulado.Text = "-";
             // 
-            // lblChiTab
+            // lblConclusion
             // 
-            this.lblChiTab.AutoSize = true;
-            this.lblChiTab.Location = new System.Drawing.Point(1434, 452);
-            this.lblChiTab.Name = "lblChiTab";
-            this.lblChiTab.Size = new System.Drawing.Size(10, 13);
-            this.lblChiTab.TabIndex = 27;
-            this.lblChiTab.Text = "-";
-            // 
-            // lblChiConclusion
-            // 
-            this.lblChiConclusion.AutoSize = true;
-            this.lblChiConclusion.Location = new System.Drawing.Point(1434, 488);
-            this.lblChiConclusion.Name = "lblChiConclusion";
-            this.lblChiConclusion.Size = new System.Drawing.Size(10, 13);
-            this.lblChiConclusion.TabIndex = 28;
-            this.lblChiConclusion.Text = "-";
-            // 
-            // lblKsCal
-            // 
-            this.lblKsCal.AutoSize = true;
-            this.lblKsCal.Location = new System.Drawing.Point(1623, 415);
-            this.lblKsCal.Name = "lblKsCal";
-            this.lblKsCal.Size = new System.Drawing.Size(10, 13);
-            this.lblKsCal.TabIndex = 29;
-            this.lblKsCal.Text = "-";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1529, 415);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(70, 13);
-            this.label15.TabIndex = 30;
-            this.label15.Text = "KS calculado";
-            // 
-            // lblKsTab
-            // 
-            this.lblKsTab.AutoSize = true;
-            this.lblKsTab.Location = new System.Drawing.Point(1623, 452);
-            this.lblKsTab.Name = "lblKsTab";
-            this.lblKsTab.Size = new System.Drawing.Size(10, 13);
-            this.lblKsTab.TabIndex = 31;
-            this.lblKsTab.Text = "-";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1534, 452);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 13);
-            this.label17.TabIndex = 32;
-            this.label17.Text = "KS tabulado";
-            // 
-            // lblKsConclusion
-            // 
-            this.lblKsConclusion.AutoSize = true;
-            this.lblKsConclusion.Location = new System.Drawing.Point(1623, 488);
-            this.lblKsConclusion.Name = "lblKsConclusion";
-            this.lblKsConclusion.Size = new System.Drawing.Size(10, 13);
-            this.lblKsConclusion.TabIndex = 34;
-            this.lblKsConclusion.Text = "-";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1544, 488);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 13);
-            this.label18.TabIndex = 33;
-            this.label18.Text = "Resultado";
+            this.lblConclusion.AutoSize = true;
+            this.lblConclusion.Location = new System.Drawing.Point(1434, 488);
+            this.lblConclusion.Name = "lblConclusion";
+            this.lblConclusion.Size = new System.Drawing.Size(10, 13);
+            this.lblConclusion.TabIndex = 28;
+            this.lblConclusion.Text = "-";
             // 
             // lblVarianza
             // 
             this.lblVarianza.AutoSize = true;
-            this.lblVarianza.Location = new System.Drawing.Point(1590, 628);
+            this.lblVarianza.Location = new System.Drawing.Point(1277, 54);
             this.lblVarianza.Name = "lblVarianza";
             this.lblVarianza.Size = new System.Drawing.Size(10, 13);
             this.lblVarianza.TabIndex = 36;
@@ -641,7 +572,7 @@ namespace TP_SIM
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1529, 628);
+            this.label14.Location = new System.Drawing.Point(1216, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 13);
             this.label14.TabIndex = 35;
@@ -650,7 +581,7 @@ namespace TP_SIM
             // lblMedia
             // 
             this.lblMedia.AutoSize = true;
-            this.lblMedia.Location = new System.Drawing.Point(1590, 595);
+            this.lblMedia.Location = new System.Drawing.Point(1277, 21);
             this.lblMedia.Name = "lblMedia";
             this.lblMedia.Size = new System.Drawing.Size(10, 13);
             this.lblMedia.TabIndex = 34;
@@ -659,7 +590,7 @@ namespace TP_SIM
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1529, 595);
+            this.label13.Location = new System.Drawing.Point(1216, 21);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 33;
@@ -671,23 +602,16 @@ namespace TP_SIM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1819, 838);
             this.Controls.Add(this.lblVarianza);
-            this.Controls.Add(this.lblKsConclusion);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.lblMedia);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.lblKsTab);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.lblKsCal);
-            this.Controls.Add(this.lblChiConclusion);
-            this.Controls.Add(this.lblChiTab);
-            this.Controls.Add(this.lblChiCalc);
-            this.Controls.Add(this.labelInfo);
+            this.Controls.Add(this.lblConclusion);
+            this.Controls.Add(this.lblValorTabulado);
+            this.Controls.Add(this.lblValorCalculado);
             this.Controls.Add(this.btnPrueba);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblResultado);
+            this.Controls.Add(this.lblCalculado);
+            this.Controls.Add(this.lblTabulado);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cmbChi);
             this.Controls.Add(this.btnLimpiarHistograma);
@@ -740,9 +664,9 @@ namespace TP_SIM
         private System.Windows.Forms.Button btnLimpiarHistograma;
         private System.Windows.Forms.ComboBox cmbChi;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTabulado;
+        private System.Windows.Forms.Label lblCalculado;
+        private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.Button btnPrueba;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nro_Iteraciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor_inf;
@@ -753,19 +677,12 @@ namespace TP_SIM
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_acumulada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_relativa_acumulada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frecuencia_esperada;
-        private System.Windows.Forms.Label labelInfo;
-        private System.Windows.Forms.Label lblChiCalc;
-        private System.Windows.Forms.Label lblChiTab;
-        private System.Windows.Forms.Label lblChiConclusion;
+        private System.Windows.Forms.Label lblValorCalculado;
+        private System.Windows.Forms.Label lblValorTabulado;
+        private System.Windows.Forms.Label lblConclusion;
         private System.Windows.Forms.DataGridView dgRND;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIteracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRND;
-        private System.Windows.Forms.Label lblKsCal;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lblKsTab;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblKsConclusion;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label lblVarianza;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblMedia;
