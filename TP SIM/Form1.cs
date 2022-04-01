@@ -70,7 +70,13 @@ namespace TP_SIM
                 double valor_act = Math.Round(valor * (i + 1), 4);
                 intervalos.Add(generarObjetoIntervalo(valor_ant, valor_act, i + 1));
                 valor_ant = valor_act;
+            };
+            
+            if (n == 12)
+            {
+                intervalos.Last().Valor_sup = 1;
             }
+            
             return intervalos;
         }
 
@@ -310,6 +316,7 @@ namespace TP_SIM
         {
             cmbIntervalos.Enabled = false;
             btnLimpiarHistograma.Enabled = true;
+            limpiarHistograma();
             //chart1.AlignDataPointsByAxisLabel();
             for (int i = 0; i < intervalos.Count; i++)
             {
@@ -319,7 +326,7 @@ namespace TP_SIM
             chart1.Series[0]["PointWidth"] = "1";
             btnHistograma.Enabled = false;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
-            chart1.ChartAreas[0].AxisX.Maximum = 13;
+            chart1.ChartAreas[0].AxisX.Maximum = intervalos.Count + 1;
             chart1.Titles["Frecuencia observada"].Visible = true;
             chart1.Titles["Frecuencia esperada"].Visible = true;
             chart1.Titles["Histograma de frecuencias"].Visible = true;
@@ -507,6 +514,11 @@ namespace TP_SIM
 
         //Esta funcion se encarga de limpiar el chart donde esta el grafico del histograma.
         private void btnLimpiarHistograma_Click(object sender, EventArgs e)
+        {
+            limpiarHistograma();
+        }
+
+        private void limpiarHistograma()
         {
             foreach (var series in chart1.Series)
             {
