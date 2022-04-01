@@ -34,8 +34,6 @@ namespace TP_SIM
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Metodo = new System.Windows.Forms.GroupBox();
             this.dgRND = new System.Windows.Forms.DataGridView();
             this.colIteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -325,7 +323,13 @@ namespace TP_SIM
             chartArea1.AxisX.IsLabelAutoFit = false;
             chartArea1.AxisX.IsStartedFromZero = false;
             chartArea1.AxisX.LabelAutoFitMinFontSize = 5;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
             chartArea1.AxisX.Maximum = 13D;
+            chartArea1.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea1.AxisX.Title = "Intervalos";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea1.AxisY.Title = "Frecuencias";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             chartArea1.CursorX.IsUserEnabled = true;
             chartArea1.Name = "ChartArea1";
             chartArea1.Position.Auto = false;
@@ -358,18 +362,10 @@ namespace TP_SIM
             this.chart1.Size = new System.Drawing.Size(1178, 316);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
-            title1.Alignment = System.Drawing.ContentAlignment.TopCenter;
-            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title1.Name = "Frecuencia observada";
-            title1.Text = "Frecuencia observada";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            title2.Name = "Histograma de frecuencias";
-            title2.Text = "Histograma de frecuencias";
-            title3.Name = "Frecuencia esperada";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            title1.Name = "Histograma de frecuencias";
+            title1.Text = "Histograma de frecuencias";
             this.chart1.Titles.Add(title1);
-            this.chart1.Titles.Add(title2);
-            this.chart1.Titles.Add(title3);
             // 
             // btnIntervalos
             // 
