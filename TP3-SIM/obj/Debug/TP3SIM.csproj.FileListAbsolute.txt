@@ -1,0 +1,10 @@
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\bin\Debug\TP3SIM.exe.config
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\bin\Debug\TP3SIM.exe
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\bin\Debug\TP3SIM.pdb
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.csproj.AssemblyReference.cache
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.Form1.resources
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.Properties.Resources.resources
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.csproj.GenerateResource.cache
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.csproj.CoreCompileInputs.cache
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.exe
+C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.pdb
