@@ -8,3 +8,13 @@ C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.csproj.GenerateRes
 C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.csproj.CoreCompileInputs.cache
 C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.exe
 C:\Users\MATIAS\Desktop\TP3 SIM NUEVO\TP3SIM\obj\Debug\TP3SIM.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\bin\Debug\TP3SIM.exe.config
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\bin\Debug\TP3SIM.exe
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\bin\Debug\TP3SIM.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.Form1.resources
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.Properties.Resources.resources
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.csproj.GenerateResource.cache
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.exe
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP3-SIM\obj\Debug\TP3SIM.pdb
