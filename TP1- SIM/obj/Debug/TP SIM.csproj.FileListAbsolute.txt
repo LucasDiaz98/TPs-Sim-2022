@@ -48,3 +48,13 @@ D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP1- SIM\obj
 D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.csproj.CoreCompileInputs.cache
 D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.exe
 D:\NO BORRAR\Desktop\2022\SIM\Cosas mias\Práctico\Tp1\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\bin\Debug\TP SIM.exe.config
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\bin\Debug\TP SIM.exe
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\bin\Debug\TP SIM.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP_SIM.TP1.resources
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP_SIM.Properties.Resources.resources
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.csproj.GenerateResource.cache
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.exe
+C:\Users\Usuario\OneDrive\Escritorio\Diego\Facultad\Simulacion\Practico\Repositorio TP3\TPs-Sim-2022\TP1- SIM\obj\Debug\TP SIM.pdb
